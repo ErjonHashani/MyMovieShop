@@ -12,17 +12,17 @@
 
 
   <!-- HEADER -->
-  <header class="bg-gray-700 py-8 px-16">
-    <div class="container mx-auto flex justify-between text-xl text-white">
-      <h2>My Movie Shop</h2>
+  <header class="bg-gray-700 py-7 px-16">
+    <div class="container mx-auto flex justify-between items-center text-xl text-white">
+      <h2 class="hover:scale-105 duration-500"><a href="index.html">My Movie Shop</a></h2>
       <nav>
         <ul class="flex gap-10">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="register.html">Register</a></li>
+          <li class="header-nav-link"><a href="index.html">Home</a></li>
+          <li class="header-nav-link"><a href="shop.html">Shop</a></li>
+          <li class="header-nav-link"><a href="cart.html">Cart</a></li>
+          <li class="header-nav-link"><a href="dashboard.html">Dashboard</a></li>
+          <li class="header-nav-link"><a href="login.html">Login</a></li>
+          <li class="header-nav-link"><a href="register.html">Register</a></li>
         </ul>
       </nav>
     </div>
@@ -35,11 +35,14 @@
   </main>
 
   <!-- LATEST MOVIE - API SHOW -->
-  <section class="py-20">
+  <section class="pt-20 pb-14">
     <div class="container mx-auto px-16">
-      <h2 class="text-center text-gray-600 text-4xl mb-2">Latest Movies</h2>
-      <p class="text-center text-orange-600 mb-12">Watch the latest movies of 2025</p>
+      <h2 class="text-center text-gray-600 text-4xl mb-2 uppercase">Latest Movies</h2>
+      <p class="text-center text-orange-600 mb-16">Watch the latest movies of 2025</p>
       <div id="latest-movies" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+    <div class="flex justify-center items-center mt-14">
+      <a href="shop.html" class="flex gap-2 justify-center items-center bg-gray-800 text-white py-2 px-4 hover:bg-gray-500 duration-500">Shop movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
     </div>
   </section>
 
@@ -151,38 +154,19 @@
 
   <!-- <script src="./api/api.js"></script> -->
   <script type="module">
+    // Imported Modules
     import { movies } from './api/api.js';
     import Slider from './components/slider.js';
 
+    //DOM Containers
     const slider_container = document.querySelector('#slider');
     const latest_movies_container = document.querySelector('#latest-movies');
 
     Slider(slider_container);
 
-    movies()
-      .then(data => {
-        const defaultPoster = 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg'
-        for (let movie of data.results.slice(6, 15)) {
 
-          const imageUrl = movie.backdrop_path
-            ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-            : defaultPoster;
-
-          latest_movies_container.innerHTML += `
-            <div class="bg-gray-800 hover:ring-4 hover:ring-gray-300 hover:cursor-pointer hover:scale-105 duration-300">
-              <img src="${imageUrl}" alt="${movie.original_title}" class="w-full h-64 ">
-              <div class="p-3">
-                <h2 class="text-xl text-white">${movie.original_title}</h2>
-                <div class="flex justify-between text-white">
-                  <a href="movie.html?id=${movie.id}" class="text-blue-600">Details</a>
-                  <p><span class="text-orange-400 mr-2">IMDB</span>${Math.floor(movie.vote_average * 10) / 10}</p>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-      }
-      )
+    // Latest Movies Section
+    movies(1, latest_movies_container, 8)
 
 
 

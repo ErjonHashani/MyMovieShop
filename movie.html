@@ -31,7 +31,7 @@
     <!-- SPECIFIC MOVIE -->
     <section class="py-20">
         <div class="container mx-auto px-16">
-            <div id="movie" class="flex gap-10"></div>
+            <div id="movie"></div>
         </div>
     </section>
 
@@ -92,18 +92,30 @@
                 const defaultPoster = 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg';
 
                 const imageUrl = movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : defaultPoster;
+                    ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` : defaultPoster;
 
-                    movie_container.innerHTML = `
-                    <img class="rounded-lg" src="${imageUrl}" alt="${movie.original_title}">
-                    <div class="flex flex-col gap-4">
-                        <h1 class="text-3xl mb-5">${movie.original_title}</h1>
-                        <p>Recap: <span class="italic">"${movie.overview}"</span></p>
-                        <p>⭐ Rate: ${Math.floor(movie.vote_average * 10) / 10}</p>
-                        <p>🔥 Trending Score: ${Math.floor(movie.popularity)}</p>
-                        <p>Production Companies: ${movie.production_companies.reduce((acc, company) => acc + company.name+', ', '')}</p>
-                        <button class="bg-gray-700 text-white py-1 px-2 self-start cursor-pointer hover:bg-gray-600">🛒 Add to cart</button>
-                    </div>
+                const year = movie.release_date.split('-')[0];
+
+                movie_container.innerHTML = `
+                    <section class="flex flex-col lg:flex-row gap-5">
+                        <img class="rounded-lg" src="${imageUrl}" alt="${movie.original_title}">
+                        <div class="flex flex-col gap-4">
+                            <h1 class="text-3xl mb-5">${movie.original_title} (${year})</h1>
+                            <p>Recap: <span class="italic">"${movie.overview}"</span></p>
+                            <p>⭐ Rate: ${Math.floor(movie.vote_average * 10) / 10}</p>
+                            <p>🔥 Trending Score: ${Math.floor(movie.popularity)}</p>
+                            <p>Production Companies: ${movie.production_companies.map(company => company.name).join(', ')}</p>
+                            <button class="bg-gray-700 text-white py-1 px-2 self-start cursor-pointer hover:bg-gray-600">🛒 Add to cart</button>
+                        </div>
+                    </section>
+                    <section class="pt-5">
+                       <div class="flex gap-2 items-center">
+                            <strong>Genre:</strong>
+                            <div class="flex flex-wrap gap-2">
+                                ${movie.genres.map(genre => `<span class="py-1 px-3 bg-gray-300 text-black rounded-2xl">${genre.name}</span>`).join(' ')}
+                            </div>
+                        </div>     
+                    </section>
                 `;
             })
 

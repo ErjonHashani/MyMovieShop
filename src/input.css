@@ -14,7 +14,7 @@
       @apply text-white text-base;
     }
     .header-nav-link{
-      @apply hover:bg-gray-600 hover:duration-500 py-3 px-2;
+      @apply hover:duration-200 hover:text-orange-600 hover:scale-105;
     }
     .shop-next-prev-button{
       @apply text-white bg-gray-700 py-2 px-4 hover:bg-gray-500 duration-500 rounded-md cursor-pointer;

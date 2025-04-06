@@ -27,7 +27,7 @@ export async function movies(...args) {
                 <h2 class="text-lg text-white mb-3">${movie.original_title}</h2>
                 <div class="flex justify-between text-white">
                 <a href="movie.html?id=${movie.id}" class="text-blue-400 hover:text-blue-600">Details</a>
-                  <p><span class="text-orange-400 mr-2">IMDB</span>${Math.floor(movie.vote_average * 10) / 10}</p>
+                  <p><span class="text-orange-400 mr-2">IMDb</span>${Math.floor(movie.vote_average * 10) / 10}</p>
                 </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@ export async function search(...args) {
                 <h2 class="text-lg text-white mb-3">${movie.original_title}</h2>
                 <div class="flex justify-between text-white">
                 <a href="movie.html?id=${movie.id}" class="text-blue-400 hover:text-blue-600">Details</a>
-                  <p><span class="text-orange-400 mr-2">IMDB</span>${Math.floor(movie.vote_average * 10) / 10}</p>
+                  <p><span class="text-orange-400 mr-2">IMDb</span>${Math.floor(movie.vote_average * 10) / 10}</p>
                 </div>
                 </div>
             </div>

@@ -12,9 +12,13 @@
 
 
   <!-- HEADER -->
-  <header class="bg-gray-700 py-7 px-16">
+  <header class="bg-gray-700 py-4 px-16 sticky top-0 z-20">
     <div class="container mx-auto flex justify-between items-center text-xl text-white">
-      <h2 class="hover:scale-105 duration-500"><a href="index.html">My Movie Shop</a></h2>
+      <div class="flex justify-between items-center gap-3">
+        <!-- Header SVG-ICON -->
+          <img src="./assets/images/logo.svg" alt="my movie shop-logo" class="w-8 h-8">
+        <h2 class="text-red-600 hover:scale-105 duration-100 uppercase font-bold"><a href="index.html">MyMovie<span class="text-white">Shop</span></a></h2>
+      </div>
       <nav>
         <ul class="flex gap-10">
           <li class="header-nav-link"><a href="index.html">Home</a></li>
@@ -29,9 +33,11 @@
   </header>
 
   <!-- SLIDER -->
-  <main id="slider" class="container mx-auto">
-    <img src="https://gugimages.s3.us-east-2.amazonaws.com/wp-content/uploads/2024/12/26000935/Mufasa-featured.jpeg"
-      alt="The Lion King Movie" class="w-full lg:h-[700px]">
+  <main class="">
+    <div id="slider" class="container mx-auto relative overflow-hidden w-full bg-black">
+      <img src="./assets/images/black-widow.webp"
+        alt="Black Widow" class="w-full object-center h-[150px] sm:h-[400px] md:h-[450px] ">
+    </div>
   </main>
 
   <!-- LATEST MOVIE - API SHOW -->
@@ -42,7 +48,12 @@
       <div id="latest-movies" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </div>
     <div class="flex justify-center items-center mt-14">
-      <a href="shop.html" class="flex gap-2 justify-center items-center bg-gray-800 text-white py-2 px-4 hover:bg-gray-500 duration-500">Shop movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
+      <a href="shop.html"
+        class="flex gap-2 justify-center items-center bg-gray-800 text-white py-2 px-4 hover:bg-gray-500 duration-500">Shop
+        movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path
+            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+        </svg></a>
     </div>
   </section>
 
@@ -147,7 +158,11 @@
                 d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
             </svg></a></div>
       </div>
-      <p class="text-white text-base text-center mt-16">All rights reserved | My Movie Web &copy; 2025</p>
+      <div class="border-t border-gray-600 mt-12 pt-6">
+        <p class="text-white text-sm text-center">
+          &copy; 2025 My Movie Shop. All rights reserved.
+        </p>
+      </div>
     </div>
   </footer>
 

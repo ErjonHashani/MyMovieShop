@@ -12,33 +12,17 @@
 
 
   <!-- HEADER -->
-  <header class="bg-gray-700 py-4 px-16 sticky top-0 z-20">
-    <div class="container mx-auto flex justify-between items-center text-xl text-white">
-      <div class="flex justify-between items-center gap-3">
-        <!-- Header SVG-ICON -->
-          <img src="./assets/images/logo.svg" alt="my movie shop-logo" class="w-8 h-8">
-        <h2 class="text-red-600 hover:scale-105 duration-100 uppercase font-bold"><a href="index.html">MyMovie<span class="text-white">Shop</span></a></h2>
-      </div>
-      <nav>
-        <ul class="flex gap-10">
-          <li class="header-nav-link"><a href="index.html">Home</a></li>
-          <li class="header-nav-link"><a href="shop.html">Shop</a></li>
-          <li class="header-nav-link"><a href="cart.html">Cart</a></li>
-          <li class="header-nav-link"><a href="dashboard.html">Dashboard</a></li>
-          <li class="header-nav-link"><a href="login.html">Login</a></li>
-          <li class="header-nav-link"><a href="register.html">Register</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header id="header" class="bg-gray-700 sticky top-0 z-20">
+    
   </header>
 
   <!-- SLIDER -->
-  <main class="">
+  <section class="bg-gray-800">
     <div id="slider" class="container mx-auto relative overflow-hidden w-full bg-black">
       <img src="./assets/images/black-widow.webp"
         alt="Black Widow" class="w-full object-center h-[150px] sm:h-[400px] md:h-[450px] ">
     </div>
-  </main>
+  </section>
 
   <!-- LATEST MOVIE - API SHOW -->
   <section class="pt-20 pb-14">
@@ -172,12 +156,15 @@
     // Imported Modules
     import { movies } from './api/api.js';
     import Slider from './components/slider.js';
+    import Header from './components/header.js';
 
     //DOM Containers
     const slider_container = document.querySelector('#slider');
+    const header_container = document.querySelector('header');
     const latest_movies_container = document.querySelector('#latest-movies');
 
     Slider(slider_container);
+    Header(header_container);
 
 
     // Latest Movies Section

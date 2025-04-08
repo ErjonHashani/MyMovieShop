@@ -5,33 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./src/output.css" rel="stylesheet">
-  <title>My Movie Web</title>
+  <title>MyMovieShop</title>
 </head>
 
 <body>
 
-
   <!-- HEADER -->
-  <header id="header" class="bg-gray-700 sticky top-0 z-20"></header>
+  <header id="header" class="bg-gray-800 py-4 px-16 sticky top-0 z-20"></header>
 
   <!-- SLIDER -->
   <section class="bg-gray-800">
     <div id="slider" class="container mx-auto relative overflow-hidden w-full bg-black">
-      <img src="./assets/images/black-widow.webp"
-        alt="Black Widow" class="w-full object-center h-[150px] sm:h-[400px] md:h-[450px] ">
+      <img src="./assets/images/black-widow.webp" alt="Black Widow"
+        class="w-full object-center h-[150px] sm:h-[400px] md:h-[450px] ">
     </div>
   </section>
+
 
   <!-- LATEST MOVIE - API SHOW -->
   <section class="pt-20 pb-14">
     <div class="container mx-auto px-16">
-      <h2 class="text-center text-gray-600 text-4xl mb-2 uppercase">Latest Movies</h2>
+      <h2 class="text-center text-gray-600 text-4xl mb-2 uppercase font-semibold">Latest Movies</h2>
       <p class="text-center text-orange-600 mb-16">Watch the latest movies of 2025</p>
       <div id="latest-movies" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </div>
     <div class="flex justify-center items-center mt-14">
       <a href="shop.html"
-        class="flex gap-2 justify-center items-center bg-gray-800 text-white py-2 px-4 hover:bg-gray-500 duration-500">Shop
+        class="flex gap-2 justify-center items-center bg-gray-800 text-white py-4 px-6 hover:bg-gray-500 duration-500 rounded-full">Shop
         movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path
             d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
@@ -40,79 +40,62 @@
   </section>
 
   <!-- ABOUT US -->
-  <section class="bg-gray-700 py-9">
-    <div class="container mx-auto px-16 lg:flex lg:gap-10 text-white items-center">
+  <section class="bg-gray-600 py-16">
+    <div class="container mx-auto px-16 lg:flex lg:gap-10 text-gray-200 items-center">
       <img
         src="https://media.istockphoto.com/id/956161134/photo/man-using-credit-card-to-pay-for-video-on-demand-service.jpg?s=612x612&w=0&k=20&c=du3jhi7DD1q8PdNNCVevW_Ytwj9kaI-5U96pCV9DswA="
-        alt="Movie Shop Image">
+        alt="Movie Shop Image" class="rounded-lg">
       <div class="flex flex-col mt-3 lg:mt-0 items-center lg:items-start">
-        <h2 class="text-3xl mb-2">About My Movie Web</h2>
+        <div class="flex items-center gap-2 mb-2">
+          <h2 class="text-3xl font-bold">About</h2>
+          <span class="text-2xl text-red-600 uppercase font-bold self-end">
+            MyMovie<span class="text-gray-200">Shop</span>
+          </span>
+        </div>
         <p>
-          Welcome to MyMovieWeb, your ultimate destination for buying and streaming the latest movies! 🎬
-
-          At MyMovieWeb, we bring the magic of cinema straight to your screen. Whether you're looking to own your
-          favorite films or stream them instantly, we offer a vast collection of blockbusters, classics, and hidden
-          gems—all in one place.
+          Welcome to MyMovieShop, your ultimate destination for discovering and buying movies! Powered by TMDB, we bring
+          you the latest films, classics, and hidden gems — all in one place. Browse, explore, and own your favorite
+          movies with just a few clicks.
         </p>
-        <span class="mt-3 mb-3 text-xl text-orange-600">Collect. Click. Watch.</span>
-        <p>The only movie store where you own what you love—then stream it anytime, anywhere.</p>
-        <div class="mt-6 w-36 hover:scale-105 duration-500">
-          <a href="#" class="bg-white text-black py-2 px-4 ">Start exploring</a>
+        <!-- About SVG's -->
+        <div class="flex flex-col gap-4 my-6">
+          <div class="flex items-center gap-2">
+            <div class="text-black bg-gray-50/50 p-2 rounded-full">
+              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM48 368l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 240l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 112l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16L64 96c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM160 128l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32L192 96c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-128 0z"/></svg>
+            </div>
+            <p>Endless Selection - From blockbusters to indie films</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="text-green-500 bg-green-300/20 p-2 rounded-full">
+              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M64 32C28.7 32 0 60.7 0 96l0 32 576 0 0-32c0-35.3-28.7-64-64-64L64 32zM576 224L0 224 0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-192zM112 352l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16z"/></svg>
+            </div>
+            <p>Easy Purchases - Buy digital copies instantly</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="text-yellow-500 bg-yellow-300/20 p-2 rounded-full">
+              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+            </div>
+            <p>Smart Search - Find exactly what you love</p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-lg py-3 hover:scale-105 duration-500">
+          <a href="#" class="bg-gray-300 text-gray-900 flex gap-2 items-center px-5 py-3 rounded-full">
+            <div class="p-2 rounded-full">
+              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3 0 256S114.7 0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1l46.6 94h-14.6l-50-100-48.9 100h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3l68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9l54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z"/></svg>
+            </div>
+            <span>Start exploring</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA SECTION - SOCIAL MEDIA -->
-  <section class="py-6">
-    <div class="container mx-auto px-16">
-      <div class="flex justify-center items-center">
-        <!-- Facebook -->
-        <div class="bg-blue-600 social-btn">
-          <a href="https://www.facebook.com/erjon.hashani/" target="_blank" class="social-btn-link">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-              <path
-                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
-            </svg>
-            <span class="social-text">Facebook</span>
-        </div>
-        </a>
-        <!-- Instagram -->
-        <div class="bg-red-600 social-btn">
-          <a href="https://www.instagram.com/erjonhashani1/" target="_blank" class="social-btn-link">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path
-                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-            </svg>
-            <span class="social-text">Instagram</span>
-          </a>
-        </div>
-        <!-- LinkedIn -->
-        <div class="bg-blue-400 social-btn">
-          <a href="https://www.linkedin.com/in/erjon-hashani-398380263/" target="_blank" class="social-btn-link">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path
-                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
-            </svg>
-            <span class="social-text">LinkedIn</span>
-          </a>
-        </div>
-        <!-- GitHub -->
-        <div class="bg-gray-700 social-btn">
-          <a href="https://github.com/ErjonHashani" target="_blank" class="social-btn-link">
-            <svg class="size-5 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path
-                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-            </svg>
-            <span class="social-text">GitHub</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section id="social-media" class="py-6"></section>
 
   <!-- FOOTER -->
-  <footer id="footer" class="bg-gray-700"></footer>
+  <footer id="footer" class="bg-gray-800"></footer>
 
 
   <!-- <script src="./api/api.js"></script> -->
@@ -122,16 +105,19 @@
     import Slider from './components/slider.js';
     import Header from './components/header.js';
     import Footer from './components/footer.js';
+    import Social from './components/social.js';
 
     //DOM Containers
     const header_container = document.querySelector('#header');
     const footer_container = document.querySelector('#footer');
     const slider_container = document.querySelector('#slider');
+    const social_container = document.querySelector('#social-media');
     const latest_movies_container = document.querySelector('#latest-movies');
 
     Header(header_container);
     Slider(slider_container);
     Footer(footer_container);
+    Social(social_container);
 
 
     // Latest Movies Section

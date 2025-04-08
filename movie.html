@@ -12,26 +12,7 @@
 
 
     <!-- HEADER -->
-    <header class="bg-gray-700 py-4 px-16 sticky top-0 z-20">
-        <div class="container mx-auto flex justify-between items-center text-xl text-white">
-            <div class="flex justify-between items-center gap-3">
-                <!-- Header SVG-ICON -->
-                <img src="./assets/images/logo.svg" alt="my movie shop-logo" class="w-8 h-8">
-                <h2 class="text-red-600 hover:scale-105 duration-100 uppercase font-bold"><a
-                        href="index.html">MyMovie<span class="text-white">Shop</span></a></h2>
-            </div>
-            <nav>
-                <ul class="flex gap-10">
-                    <li class="header-nav-link"><a href="index.html">Home</a></li>
-                    <li class="header-nav-link"><a href="shop.html">Shop</a></li>
-                    <li class="header-nav-link"><a href="cart.html">Cart</a></li>
-                    <li class="header-nav-link"><a href="dashboard.html">Dashboard</a></li>
-                    <li class="header-nav-link"><a href="login.html">Login</a></li>
-                    <li class="header-nav-link"><a href="register.html">Register</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <header id="header" class="bg-transparent py-4 px-16 top-0 z-20"></header>
 
     <!-- SPECIFIC MOVIE -->
     <section class="py-20">
@@ -42,51 +23,24 @@
 
 
     <!-- FOOTER -->
-    <footer class="bg-gray-700">
-        <div class="container mx-auto px-16 py-7">
-            <div class="text-white flex justify-between items-center">
-                <!-- Title and info -->
-                <div class="w-80">
-                    <h1 class="text-xl">My Movie Shop</h1>
-                    <p class="mt-3 text-sm">Your ultimate destination for the latest blockbusters, timeless classics,
-                        and
-                        exclusive collector's
-                        editions. Enjoy high-quality streaming or fast delivery for physical copies.</p>
-                </div>
-                <!-- Movies -->
-                <div class="flex flex-col">
-                    <a href="shop.html" class="text-xl hover:text-orange-600 duration-200">Movies</a>
-                    <ul class="mt-3 text-sm">
-                        <li>Action-packed thrillers</li>
-                        <li>Award-winning dramas</li>
-                        <li>Family-friendly animations</li>
-                        <li class="text-orange-600">Exclusive behind-the-scenes footage</li>
-                    </ul>
-                </div>
-                <!-- Shop -->
-                <div class="self-baseline bg-white hover:scale-105 duration-500"><a href="cart.html"
-                        class="flex justify-center items-center gap-2 text-gray-700 py-2 px-3">Purchase now <svg
-                            class="size-4 fill-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path
-                                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                        </svg></a></div>
-            </div>
-            <div class="border-t border-gray-600 mt-12 pt-6">
-                <p class="text-white text-sm text-center">
-                    &copy; 2025 My Movie Shop. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+    <footer id="footer" class="bg-gray-800/20"></footer>
 
 
     <!-- <script src="./api/api.js"></script> -->
     <script type="module">
         // Imported Modules
         import { movie } from './api/api.js';
+        import Header from './components/header.js';
+        import Footer from './components/footer.js';
 
         //DOM Containers
+        const header_container = document.querySelector('#header');
+        const footer_container = document.querySelector('#footer');
         const movie_container = document.querySelector('#movie');
+
+
+        Header(header_container);
+        Footer(footer_container);
 
         // Get Movie ID from URL
         const url = window.location.href.split('?')[1];
@@ -97,23 +51,6 @@
         // Render Movie Data
         movie(id)
             .then(movie => {
-
-                function updateRatingDisplay(movie) {
-                    const ratingCircle = document.getElementById('ratingCircle');
-
-                    ratingCircle.className = ratingCircle.className
-                        .replace(/border-(red|yellow|green)-[0-9]+/g, '')
-                        .replace(/text-(red|yellow|green)-[0-9]+/g, '');
-
-                    if (movie.vote_average >= 7) {
-                        ratingCircle.classList.add('border-green-500', 'text-green-500');
-                    } else if (movie.vote_average >= 5) {
-                        ratingCircle.classList.add('border-yellow-500', 'text-yellow-500');
-                    } else {
-                        ratingCircle.classList.add('border-red-500', 'text-red-500');
-                    }
-                    ratingCircle.textContent = movie.vote_average.toFixed(1);
-                }
 
                 const defaultPoster = 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg';
 
@@ -155,23 +92,47 @@
                                 <h3 class="text-2xl">Overview</h3>
                                 <p class="font-thin xl:pr-60 text-gray-100">${movie.overview}</p>  
                             </div>
-                            <div class="grid sm:grid-cols-2 gap-y-5 my-5">
+                            <div class="grid sm:grid-cols-3 gap-y-5 my-5">
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Original Title</h3><p>${movie.original_title}</p></div>
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Release Date</h3><p>${formatReleaseDate(movie.release_date)}</p></div> 
-                                <div class="flex flex-col gap-2 pr-40"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ')}</p></div> 
-                                <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Language</h3><p>${movie.spoken_languages.map(language => language.english_name).join(', ')}</p></div>     
+                                <div class="flex flex-col gap-2">
+                                    <h3 class="font-bold text-lg text-red-700 text-shadow-sm ml-2">Price</h3>
+                                    <div class="bg-yellow-600/20 rounded-full w-14 h-14 flex items-center justify-center">
+                                        <p class="text-yellow-500 font-semibold self-center" id="price">${(movie.vote_average * 2).toFixed(2)}</p>
+                                        <span class="text-yellow-400">&euro;</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 pr-20"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ') || "No data"}</p></div> 
+                                <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Language</h3><p>${movie.spoken_languages.map(language => language.english_name).join(', ')}</p></div>
                             </div>
                             <div class="flex items-center gap-2">
                                 <button class="py-3 px-5 flex gap-2 justify-center items-center cursor-pointer bg-red-700 text-white font-semibold rounded-lg hover:bg-red-500 duration-150">
-                                    <svg class="w-4 h-4" fill="white" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg> Watch Trailer</button>
-                                <button class="bg-gray-700 text-white font-semibold py-3 px-5 cursor-pointer hover:bg-gray-600 duration-150 rounded-lg">🛒 Add to cart</button>
+                                    <svg class="w-4 h-4" fill="white" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg> 
+                                    Watch Trailer
+                                </button>
+                                
+                                <!-- ADD TO CART FORM -->
+                                <form id="addCardForm" action="#" class="flex items-center gap-2">
+                                    <button id="addCart" class="flex items-center gap-2 bg-gray-700 text-white font-semibold py-3 px-5 hover:bg-gray-600 duration-150 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.4.4-.7 1-.7 1.7V20a2 2 0 002 2h14"/>
+                                        </svg> 
+                                        Add to cart
+                                    </button>
+                                    <div class="bg-gray-700 rounded-lg border-1 border-gray-300">
+                                        <button id="minusButton" class="w-7 bg-gray-300 py-3 text-gray-800 cursor-pointer rounded-tl-lg rounded-bl-lg hover:bg-gray-400">-</button>
+                                        <input class="w-20 bg-gray-700 py-3 pl-8" type="number" min="1" max="10" value="1">
+                                        <button id="plusButton" class="w-7 bg-gray-300 py-3 text-gray-800 cursor-pointer rounded-tr-lg rounded-br-lg hover:bg-gray-400"">+</button> 
+                                    </div>
+                                </form>
+                                
                             </div>
                         </div>
                     </section>
                     <section class="mt-32">
                         <h2 class="border-b-1 border-gray-600 text-3xl font-semibold pb-6 text-gray-100">Movie Details</h2>
                         <div class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-10">
-                            <div class="bg-gray-700/40 p-5 rounded-lg">
+                            <div class="bg-gray-700/50 p-5 rounded-lg">
                                 <h3 class="font-bold text-red-500 text-xl pb-5">Production Info</h3>
                                 <div class="flex flex-col gap-2">
 
@@ -202,13 +163,13 @@
                                         </div>
                                         <div class="flex flex-col">
                                             <span class="text-purple-300">Country</span> 
-                                            <span class="text-sm text-white">${movie.production_countries.map((country) => country.name).join(', ')}</span>
+                                            <span class="text-sm text-white">${movie.production_countries.map((country) => country.name).join(', ') || "No data"}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="bg-gray-700/40 p-5 rounded-lg">
+                            <div class="bg-gray-700/50 p-5 rounded-lg">
                                 <h3 class="font-bold text-red-500 text-xl pb-5">Status</h3>
                                 <div class="font-semibold flex items-center gap-2">
                                     <div class="py-2 px-2 bg-gray-500/40 rounded-full text-black mr-2">
@@ -218,7 +179,7 @@
                                 </div>
                             </div>
 
-                            <div class="bg-gray-700/40 p-5 rounded-lg">
+                            <div class="bg-gray-700/50 p-5 rounded-lg">
                                 <h3 class="font-bold text-red-500 text-lg pb-3">Reviews</h3>
                                 <div class="flex flex-col gap-2">
                                     <p>${createStarRating(movie.vote_average, movie.vote_count)}</p>
@@ -296,7 +257,7 @@
                     for (let i = 0; i < fullStars; i++) starsHTML += fullStar;
                     if (hasHalfStar) starsHTML += halfStar;
                     for (let i = 0; i < emptyStars; i++) starsHTML += emptyStar;
-                    
+
 
                     return `
                         <div class="flex items-center">
@@ -306,6 +267,47 @@
                     `;
                 }
 
+                // Getting price
+                const price = parseFloat(document.querySelector('#price')?.textContent || 0);
+                const quantityInput = document.querySelector('#addCardForm input[type="number"]');
+                const addCardForm = document.querySelector('#addCardForm');
+
+                // Minus button listener
+                document.getElementById('minusButton').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (quantityInput.value > 1) quantityInput.value--;
+                });
+                // Plus button listener
+                document.getElementById('plusButton').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (quantityInput.value < 10) quantityInput.value++;
+                });
+
+                // Form listener
+                addCardForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+
+                    const quantity = parseInt(quantityInput.value);
+                    const totalPrice = (price * quantity).toFixed(2);
+
+                    // Store raw values
+                    localStorage.setItem('lastAdded_movieId', movie.id);       
+                    localStorage.setItem('lastAdded_title', movie.title);      
+                    localStorage.setItem('lastAdded_quantity', quantity);      
+                    localStorage.setItem('lastAdded_totalPrice', totalPrice);    
+
+                    // Optional: Track all items as a delimited string
+                    const existingItems = localStorage.getItem('cartItems') || '';
+                    localStorage.setItem('cartItems', `${existingItems}${movie.id}:${quantity}:${totalPrice},`);
+
+                    console.log('Saved:', { 
+                        id: movie.id, 
+                        quantity, 
+                        totalPrice 
+                    });
+                    
+                })
+                
             })
 
     </script>

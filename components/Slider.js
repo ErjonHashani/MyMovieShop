@@ -1,9 +1,10 @@
 const images = [
     './assets/images/black-widow.webp',
-    './assets/images/a-working-man.jpg',
+    './assets/images/dark-knight.jpg',
     './assets/images/captain-marvel.jpg',
     './assets/images/the-gorge.jpg',
-    './assets/images/bridget-jones.jpg'
+    './assets/images/dune-part-2.jpg',
+    './assets/images/mad-max.jpg',
 ];
 
 let active_image = 1;
@@ -11,7 +12,7 @@ let active_image = 1;
 export default function Slider(container) {
     setInterval(() => {
         container.innerHTML = `
-            <img src="${images[active_image]}" alt="Slider image" class="w-full h-[150px] sm:h-[350px] md:h-[450px] object-center"/>
+            <img src="${images[active_image]}" alt="Slider image" class="w-full h-[150px] sm:h-[250px] lg:h-[400px] xl:h-[450px] object-center"/>
         `;
 
         

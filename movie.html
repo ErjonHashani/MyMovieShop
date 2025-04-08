@@ -105,14 +105,14 @@
                                 <div class="flex flex-col gap-2 pr-20"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ') || "No data"}</p></div> 
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Language</h3><p>${movie.spoken_languages.map(language => language.english_name).join(', ')}</p></div>
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex flex-col sm:flex-row items-center gap-2">
                                 <button class="py-3 px-5 flex gap-2 justify-center items-center cursor-pointer bg-red-700 text-white font-semibold rounded-lg hover:bg-red-500 duration-150">
                                     <svg class="w-4 h-4" fill="white" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg> 
                                     Watch Trailer
                                 </button>
                                 
                                 <!-- ADD TO CART FORM -->
-                                <form id="addCardForm" action="#" class="flex items-center gap-2">
+                                <form id="addCardForm" action="#" class="flex flex-col sm:flex-row items-center gap-2">
                                     <button id="addCart" class="flex items-center gap-2 bg-gray-700 text-white font-semibold py-3 px-5 hover:bg-gray-600 duration-150 rounded-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.4.4-.7 1-.7 1.7V20a2 2 0 002 2h14"/>
@@ -131,7 +131,7 @@
                     </section>
                     <section class="mt-32">
                         <h2 class="border-b-1 border-gray-600 text-3xl font-semibold pb-6 text-gray-100">Movie Details</h2>
-                        <div class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-10">
+                        <div class="pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                             <div class="bg-gray-700/50 p-5 rounded-lg">
                                 <h3 class="font-bold text-red-500 text-xl pb-5">Production Info</h3>
                                 <div class="flex flex-col gap-2">
@@ -291,23 +291,52 @@
                     const totalPrice = (price * quantity).toFixed(2);
 
                     // Store raw values
-                    localStorage.setItem('lastAdded_movieId', movie.id);       
-                    localStorage.setItem('lastAdded_title', movie.title);      
-                    localStorage.setItem('lastAdded_quantity', quantity);      
-                    localStorage.setItem('lastAdded_totalPrice', totalPrice);    
+                    localStorage.setItem('lastAdded_movieId', movie.id);
+                    localStorage.setItem('lastAdded_title', movie.title);
+                    localStorage.setItem('lastAdded_quantity', quantity);
+                    localStorage.setItem('lastAdded_totalPrice', totalPrice);
 
                     // Optional: Track all items as a delimited string
                     const existingItems = localStorage.getItem('cartItems') || '';
                     localStorage.setItem('cartItems', `${existingItems}${movie.id}:${quantity}:${totalPrice},`);
 
-                    console.log('Saved:', { 
-                        id: movie.id, 
-                        quantity, 
-                        totalPrice 
-                    });
+                    // Notification element
+                    const notification = document.createElement('div');
+                    // Parent div (notification) added classes
+                    notification.className = `fixed bottom-4 right-4 py-3 px-5 bg-green-600 text-gray-100 flex items-center gap-2 rounded-lg opacity-0 translate-y-4 transition-all duration-300 ease-out`;
+
+                    // Short movie title (15 characters max)
+                    const shortTitle = movie.original_title.length > 15 ? `${movie.original_title.substring(0,15)}...` : movie.original_title;
+
+                    // Adding children via innerHTML
+                    notification.innerHTML = `
+                    <svg class="w-4 h-4 shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                    <span>Added ${quantity} x "${shortTitle}" (&euro;${totalPrice}) to cart</span>
+                    <span class="bg-white p-1 rounded-full animate-ping"></span>
+                    `;
+
+                    document.body.appendChild(notification);
                     
+                    setTimeout(() => {
+                        notification.classList.remove('opacity-0', 'translate-y-4');
+                        notification.classList.add('opacity-100', 'translate-y-0');
+                    }, 10);
+
+                    setTimeout(() => {
+                        notification.classList.remove('opacity-100', 'translate-y-0');
+                        notification.classList.add('opacity-0', 'translate-y-4');
+    
+                        setTimeout(() => notification.remove(), 200);
+                    }, 3000);
+
+                    console.log('Saved:', {
+                        id: movie.id,
+                        quantity,
+                        totalPrice
+                    });
+
                 })
-                
+
             })
 
     </script>

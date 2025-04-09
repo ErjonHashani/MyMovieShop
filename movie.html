@@ -16,9 +16,15 @@
     <header id="header" class="bg-transparent py-4 px-16 top-0 z-20"></header>
 
     <!-- SPECIFIC MOVIE -->
-    <section class="py-20">
+    <section class="py-20 min-h-[70vh]">
         <div class="container mx-auto px-16">
-            <div id="movie"></div>
+            <!-- Loading state -->
+            <div id="loading" class="flex justify-center items-center h-full">
+                <div class="w-12 h-12 border-4 border-t-red-500 border-gray-300 rounded-full animate-spin"></div>
+            </div>
+
+            <!-- Show movie -->
+            <div id="movie" class="hidden"></div>
         </div>
     </section>
 
@@ -38,6 +44,7 @@
         const header_container = document.querySelector('#header');
         const footer_container = document.querySelector('#footer');
         const movie_container = document.querySelector('#movie');
+        const loading_container = document.querySelector('#loading');
 
 
         Header(header_container);
@@ -337,6 +344,11 @@
                     });
 
                 })
+
+                loading_container.classList.add('hidden');
+                movie_container.classList.remove('hidden');
+
+                
 
             })
             .catch(error => {

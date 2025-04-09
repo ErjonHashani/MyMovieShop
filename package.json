@@ -1,22 +1,22 @@
 {
-  "name": "mymovieweb",
+  "name": "mymovieshop",
   "version": "1.0.0",
-  "description": "MyMovieWeb is a lightweight movie discovery site built with HTML5, TailwindCSS v4, and vanilla JavaScript. Features responsive design, movie search, and dynamic content loading - perfect for showcasing core frontend skills from Per Programera bootcamp!",
-  "homepage": "https://github.com/ErjonHashani/MyMovieWeb#readme",
+  "description": "MyMovieShop is a lightweight movie discovery site built with HTML5, TailwindCSS v4, and vanilla JavaScript.",
+  "homepage": "https://github.com/ErjonHashani/MyMovieShop#readme",
   "bugs": {
-    "url": "https://github.com/ErjonHashani/MyMovieWeb/issues"
+    "url": "https://github.com/ErjonHashani/MyMovieShop/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ErjonHashani/MyMovieWeb.git"
+    "url": "git+https://github.com/ErjonHashani/MyMovieShop.git"
   },
   "license": "ISC",
   "author": "",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss build --input ./src/tailwind.css --output ./assets/css/tailwind.css --minify",
-    "dev": "tailwindcss build --input ./src/tailwind.css --output ./assets/css/tailwind.css --watch"
+    "build": "tailwindcss build --input ./src/input.css --output ./src/output.css --minify",
+    "dev": "tailwindcss build --input ./src/input.css --output ./src/output.css --watch"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.16",

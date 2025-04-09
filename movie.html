@@ -45,10 +45,11 @@
         const params = new URLSearchParams(url)
         const id = params.get('id');
 
-        // Render Movie Data
+        
         Promise.all([
         Header(header_container),
         Footer(footer_container),
+        // Render Movie Data
         movie(id).then(movie => {
 
                 const defaultPoster = 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg';

@@ -2,7 +2,7 @@
 
 function Footer(footer_container) {
 
-    const isMoviePage = window.location.pathname.includes('movie.html');
+    const isMoviePage = window.location.pathname.endsWith('movie.html') || window.location.href.includes('movie.html?');
 
     footer_container.innerHTML = `
         <div class="container mx-auto px-16 py-7">

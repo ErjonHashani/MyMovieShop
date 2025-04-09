@@ -342,15 +342,7 @@
         ]).then(() => {
             document.querySelectorAll('.invisible-until-loaded')
             .forEach(el => el.classList.replace('invisible-until-loaded', 'visible-when-loaded'));
-            })
-            .catch(error => {
-            console.error("Failed to load movie:", error);
-            movie_container.innerHTML = `
-                <div class="text-red-500 p-4 bg-red-100 rounded-lg">
-                Error loading movie data. Please try again later.
-                </div>
-            `;
-            });
+        })
 
     </script>
 

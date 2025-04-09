@@ -2,7 +2,8 @@
 
 function Footer(footer_container) {
 
-    const isMoviePage = window.location.pathname.endsWith('movie.html') || window.location.href.includes('movie.html?');
+    const path = window.location.pathname;
+    const isMoviePage = path.endsWith('movie.html') || path.includes('movie.html?');
 
     footer_container.innerHTML = `
         <div class="container mx-auto px-16 py-7">
@@ -41,7 +42,10 @@ function Footer(footer_container) {
 
     if (isMoviePage) {
         const purchaseDiv = footer_container.querySelector('#purchase');
-        if (purchaseDiv) purchaseDiv.style.display = 'none';
+        if (purchaseDiv) {
+            purchaseDiv.style.display = 'none';
+            console.log('Forcibly hid purchase div on movie page');
+        }
     }
 }
 

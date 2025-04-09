@@ -9,24 +9,24 @@
     <title>Movie</title>
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col">
 
 
     <!-- HEADER -->
-    <header id="header" class="bg-transparent py-4 px-16 top-0 z-20"></header>
+    <header id="header" class="invisible-until-loaded bg-transparent py-4 px-16 top-0 z-20"></header>
 
     <!-- SPECIFIC MOVIE -->
-    <section class="py-20 min-h-[70vh]">
+    <section class="py-20 min-h-[70vh] invisible-until-loaded">
         <div class="container mx-auto px-16">
 
             <!-- Show movie -->
-            <div id="movie" class="hidden"></div>
+            <div id="movie"></div>
         </div>
     </section>
 
 
     <!-- FOOTER -->
-    <footer id="footer" class="bg-gray-800/20"></footer>
+    <footer id="footer" class="invisible-until-loaded bg-gray-800/20"></footer>
 
 
     <!-- <script src="./api/api.js"></script> -->

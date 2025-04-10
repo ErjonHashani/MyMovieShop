@@ -23,13 +23,77 @@
     </main>
 
     <!-- Login request -->
-    <section id="login-request" class="invisible-until-loaded"></section>
+    <section id="login-request" class="invisible-until-loaded py-20 px-16 bg-gray-800">
+        <div class="container mx-auto flex flex-col justify-center items-center gap-5">
+            <div class="flex">
+                <div class="p-4 bg-red-600 text-gray-900 rounded-lg">
+                    <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM48 368l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 240l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 112l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16L64 96c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM160 128l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32L192 96c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-128 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-center items-center gap-2">
+                <div class="">
+                    <p class="text-gray-200 font-semibold text-4xl">Your<span class="text-red-600"> Personal
+                            Theater</span>
+                    </p>
+                </div>
+                <div>
+                    <p class="text-gray-300 font-normal text-lg">Unlock your order history and saved favorites </pc>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6 mt-2">
+                <div class="group relative inline-block">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-r from-red-500 to-red-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition-all duration-200 animate-pulse">
+                    </div>
+                    <a href="login.html"
+                        class="relative flex justify-center items-center px-8 py-3.5 bg-gray-900 group-hover:bg-gray-800 duration-200 rounded-lg gap-2">
+                        <div class="text-gray-200 bg-gray-900 rounded-full">
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512">
+                                <path
+                                    d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-300 text-base font-medium">Existing User</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="group relative inline-block">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition-all duration-200 animate-pulse">
+                    </div>
+                    <a href="register.html"
+                        class="relative flex justify-center items-center px-8 py-3.5 bg-gray-900 group-hover:bg-gray-800 duration-200 rounded-lg gap-2">
+                        <div class="text-gray-200 rounded-full">
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-gray-300 text-base font-medium">New User</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-gray-400 text-sm font-thin">Secured with 256-bit encryption • No payment info required
+                </p>
+            </div>
+        </div>
+    </section>
 
 
     <!-- FOOTER -->
-    <footer id="footer" class="invisible-until-loaded bg-gray-800/10 ">
-        <div class="container mx-auto py-5">
-            <p class="text-center text-gray-300 text-sm sm:text-base">&copy; 2025 MyMovieShop. All rights reserved. Data provided by <a class="text-orange-300 hover:text-orange-600 duration-100" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
+    <footer id="footer" class="invisible-until-loaded bg-gray-800 px-72">
+        <div class="container mx-auto py-5 border-t-1 border-gray-600">
+            <p class="text-center text-gray-300 text-sm sm:text-base">&copy; 2025 MyMovieShop. All rights reserved. Data
+                provided by <a class="text-orange-300 hover:text-orange-600 duration-100"
+                    href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
         </div>
     </footer>
 
@@ -50,11 +114,11 @@
         const params = new URLSearchParams(url)
         const id = params.get('id');
 
-        
+
         Promise.all([
-        Header(header_container),
-        // Render Movie Data
-        movie(id).then(movie => {
+            Header(header_container),
+            // Render Movie Data
+            movie(id).then(movie => {
 
                 const defaultPoster = 'https://static.vecteezy.com/system/resources/thumbnails/022/059/000/small_2x/no-image-available-icon-vector.jpg';
 
@@ -310,7 +374,7 @@
                     notification.className = `fixed bottom-4 right-4 py-3 px-5 bg-green-600 text-gray-100 flex items-center gap-2 rounded-lg opacity-0 translate-y-4 transition-all duration-300 ease-out`;
 
                     // Short movie title (15 characters max)
-                    const shortTitle = movie.original_title.length > 15 ? `${movie.original_title.substring(0,15)}...` : movie.original_title;
+                    const shortTitle = movie.original_title.length > 15 ? `${movie.original_title.substring(0, 15)}...` : movie.original_title;
 
                     // Adding children via innerHTML
                     notification.innerHTML = `
@@ -320,7 +384,7 @@
                     `;
 
                     document.body.appendChild(notification);
-                    
+
                     setTimeout(() => {
                         notification.classList.remove('opacity-0', 'translate-y-4');
                         notification.classList.add('opacity-100', 'translate-y-0');
@@ -329,7 +393,7 @@
                     setTimeout(() => {
                         notification.classList.remove('opacity-100', 'translate-y-0');
                         notification.classList.add('opacity-0', 'translate-y-4');
-    
+
                         setTimeout(() => notification.remove(), 200);
                     }, 3000);
 
@@ -344,18 +408,18 @@
             })
         ]).then(() => {
             document.querySelectorAll('.invisible-until-loaded')
-            .forEach(el => el.classList.replace('invisible-until-loaded', 'visible-when-loaded'));
+                .forEach(el => el.classList.replace('invisible-until-loaded', 'visible-when-loaded'));
         }).catch(error => {
-        console.error("Loading failed:", error);
-        // Show error message to user
-        movie_container.innerHTML = `
+            console.error("Loading failed:", error);
+            // Show error message to user
+            movie_container.innerHTML = `
             <div class="text-red-500 p-8 text-center">
             Failed to load movie data. Please try again.
             </div>
         `;
-        // Still show header/footer
-        document.querySelectorAll('.invisible-until-loaded')
-            .forEach(el => el.classList.replace('invisible-until-loaded', 'visible-when-loaded'));
+            // Still show header/footer
+            document.querySelectorAll('.invisible-until-loaded')
+                .forEach(el => el.classList.replace('invisible-until-loaded', 'visible-when-loaded'));
         });
 
     </script>

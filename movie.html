@@ -22,9 +22,16 @@
         </section>
     </main>
 
+    <!-- Login request -->
+    <section id="login-request" class="invisible-until-loaded"></section>
+
 
     <!-- FOOTER -->
-    <footer id="footer" class="invisible-until-loaded bg-gray-800/20"></footer>
+    <footer id="footer" class="invisible-until-loaded bg-gray-800/10 ">
+        <div class="container mx-auto py-5">
+            <p class="text-center text-gray-300 text-sm sm:text-base">&copy; 2025 MyMovieShop. All rights reserved. Data provided by <a class="text-orange-300 hover:text-orange-600 duration-100" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
+        </div>
+    </footer>
 
 
     <!-- <script src="./api/api.js"></script> -->
@@ -36,7 +43,6 @@
 
         //DOM Containers
         const header_container = document.querySelector('#header');
-        const footer_container = document.querySelector('#footer');
         const movie_container = document.querySelector('#movie');
 
         // Get Movie ID from URL
@@ -48,7 +54,6 @@
         
         Promise.all([
         Header(header_container),
-        Footer(footer_container),
         // Render Movie Data
         movie(id).then(movie => {
 

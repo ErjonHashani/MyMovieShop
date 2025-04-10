@@ -2,9 +2,6 @@
 
 function Footer(footer_container) {
 
-    const path = window.location.pathname;
-    const isMoviePage = path.endsWith('movie.html') || path.includes('movie.html?');
-
     footer_container.innerHTML = `
         <div class="container mx-auto px-16 py-7">
             <div class="text-gray-200 md:flex justify-between items-center">
@@ -39,14 +36,6 @@ function Footer(footer_container) {
             </div>
         </div>
     `;
-
-    if (isMoviePage) {
-        const purchaseDiv = footer_container.querySelector('#purchase');
-        if (purchaseDiv) {
-            purchaseDiv.style.display = 'none';
-            console.log('Forcibly hid purchase div on movie page');
-        }
-    }
 }
 
 export default Footer;

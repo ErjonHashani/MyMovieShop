@@ -122,7 +122,7 @@
                                 <button data-index="${index}" class="remove-btn self-end text-red-600 hover:text-red-800">
                                     <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z"/></svg>
                                 </button>
-                                <p class="text-gray-300">€${item.price.toFixed(2)}</p>
+                                <p id="price-${index}" class="text-gray-300">€${(item.price * item.quantity).toFixed(2)}</p>
                             </div>
                         </div>
                     `;
@@ -161,9 +161,10 @@
                 const quantityBtn = e.target.closest('[data-index]'); // Fetch +/- buttons
                 if (quantityBtn && !removeBtn) {  // Not Double-handle remove clicks
                     const index = parseInt(quantityBtn.dataset.index);
+                    const item = cart[index];
         
                     if (quantityBtn.classList.contains('increment-btn')) {
-                        if (cart[index].quantity < MAX_QUANTITY) {  // Only increment if below max
+                        if (cart[index].quantity < MAX_QUANTITY) {  // Only increment if below MAX_QUANTITY
                             cart[index].quantity += 1;
                             shouldUpdate = true;
                         }
@@ -175,10 +176,19 @@
                         }
                         shouldUpdate = true;
                     }
+
+                    if (shouldUpdate && item) {
+                        const priceElement = document.getElementById(`price-${index}`);
+                        if (priceElement) {
+                            priceElement.textContent = `€${(item.price * item.quantity).toFixed(2)}`;
+                        }
+                    }
                 }
 
                 if (shouldUpdate) {
                     localStorage.setItem('movieCart', JSON.stringify(cart));
+                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    document.getElementById('total-price').textContent = total.toFixed(2);
                     showCart();
                 }
             });

@@ -71,7 +71,11 @@
                     <a href="register.html"
                         class="relative flex justify-center items-center px-8 py-3.5 bg-gray-900 group-hover:bg-gray-800 duration-200 rounded-lg gap-2">
                         <div class="text-gray-200 rounded-full">
-                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 512">
+                                <path
+                                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                            </svg>
                         </div>
                         <div>
                             <p class="text-gray-300 text-base font-medium">New User</p>
@@ -89,7 +93,7 @@
 
 
     <!-- FOOTER -->
-    <footer id="footer" class="invisible-until-loaded bg-gray-800 px-72">
+    <footer id="footer" class="invisible-until-loaded bg-gray-800 px-16 lg:px-72">
         <div class="container mx-auto py-5 border-t-1 border-gray-600">
             <p class="text-center text-gray-300 text-sm sm:text-base">&copy; 2025 MyMovieShop. All rights reserved. Data
                 provided by <a class="text-orange-300 hover:text-orange-600 duration-100"
@@ -148,10 +152,10 @@
                                 <div class="min-w-[3rem]">
                                     <span id="ratingCircle" class="inline-grid place-items-center w-12 h-12 border-2 rounded-full aspect-square text-center leading-none">${Math.floor(movie.vote_average * 10) / 10}</span>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
+                                <div class="flex flex-col sm:flex-row gap-2">
                                     ${movie.genres.map(genre => `<span class="py-1 px-3 bg-gray-600 text-white rounded-2xl">${genre.name}</span>`).join(' ')}
                                 </div>
-                                <div class="py-1 px-3 bg-gray-600 text-white rounded-2xl">${formatRuntime(movie.runtime)}</div>
+                                <div class="py-1 px-3 bg-gray-600 text-white rounded-2xl">&#9679; ${formatRuntime(movie.runtime)}</div>
                             </div>
                             <div class="pt-5">
                                 <p class="italic text-lg font-light">"${movie.tagline || "No tagline available"}"</p>    
@@ -173,7 +177,7 @@
                                 <div class="flex flex-col gap-2 pr-20"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ') || "No data"}</p></div> 
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Language</h3><p>${movie.spoken_languages.map(language => language.english_name).join(', ')}</p></div>
                             </div>
-                            <div class="flex flex-col sm:flex-row items-center gap-2">
+                            <div class="flex flex-col sm:flex-row items-baseline sm:items-center gap-2">
                                 <button class="py-3 px-5 flex gap-2 justify-center items-center cursor-pointer bg-red-700 text-white font-semibold rounded-lg hover:bg-red-500 duration-150">
                                     <svg class="w-4 h-4" fill="white" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg> 
                                     Watch Trailer
@@ -357,30 +361,44 @@
 
                     const quantity = parseInt(quantityInput.value);
                     const totalPrice = (price * quantity).toFixed(2);
+                    const movieId = new URLSearchParams(window.location.search).get('id');
+                    const movieTitle = document.querySelector('h1').textContent.split(' (')[0];
+                    const movieRating = Math.floor(movie.vote_average * 10) / 10;
 
-                    // Store raw values
-                    localStorage.setItem('lastAdded_movieId', movie.id);
-                    localStorage.setItem('lastAdded_title', movie.title);
-                    localStorage.setItem('lastAdded_quantity', quantity);
-                    localStorage.setItem('lastAdded_totalPrice', totalPrice);
+                    // Get existing cart FIRST
+                    let cart = JSON.parse(localStorage.getItem('movieCart')) || [];
 
-                    // Optional: Track all items as a delimited string
-                    const existingItems = localStorage.getItem('cartItems') || '';
-                    localStorage.setItem('cartItems', `${existingItems}${movie.id}:${quantity}:${totalPrice},`);
+                    // Check if movie already exists
+                    const existingItem = cart.find(item => item.id === movieId);
 
-                    // Notification element
+                    if (existingItem) {
+                        // Update quantity if movie exists
+                        existingItem.quantity += quantity;
+                    } else {
+                        // Add new item if movie doesn't exist
+                        cart.push({
+                            id: movieId,
+                            title: movieTitle,
+                            price: price,
+                            quantity: quantity,
+                            image: imageUrl,
+                            vote: movieRating
+                        });
+                    }
+
+                    localStorage.setItem('movieCart', JSON.stringify(cart));
+
+                    // Notification popup
                     const notification = document.createElement('div');
-                    // Parent div (notification) added classes
                     notification.className = `fixed bottom-4 right-4 py-3 px-5 bg-green-600 text-gray-100 flex items-center gap-2 rounded-lg opacity-0 translate-y-4 transition-all duration-300 ease-out`;
 
-                    // Short movie title (15 characters max)
-                    const shortTitle = movie.original_title.length > 15 ? `${movie.original_title.substring(0, 15)}...` : movie.original_title;
+                    const shortTitle = movie.original_title.length > 15 ?
+                        `${movie.original_title.substring(0, 15)}...` : movie.original_title;
 
-                    // Adding children via innerHTML
                     notification.innerHTML = `
-                    <svg class="w-4 h-4 shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
-                    <span>Added ${quantity} x "${shortTitle}" (&euro;${totalPrice}) to cart</span>
-                    <span class="bg-white p-1 rounded-full animate-ping"></span>
+                        <svg class="w-4 h-4 shrink-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                        <span>Added ${quantity} x "${shortTitle}" (&euro;${totalPrice}) to cart</span>
+                        <span class="bg-white p-1 rounded-full animate-ping"></span>
                     `;
 
                     document.body.appendChild(notification);
@@ -393,18 +411,9 @@
                     setTimeout(() => {
                         notification.classList.remove('opacity-100', 'translate-y-0');
                         notification.classList.add('opacity-0', 'translate-y-4');
-
                         setTimeout(() => notification.remove(), 200);
                     }, 3000);
-
-                    console.log('Saved:', {
-                        id: movie.id,
-                        quantity,
-                        totalPrice
-                    });
-
-                })
-
+                });
             })
         ]).then(() => {
             document.querySelectorAll('.invisible-until-loaded')

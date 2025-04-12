@@ -111,9 +111,10 @@
                                     <p class="text-gray-300 text-2xl font-semibold">${item.title}</p>
                                     <p>⭐${item.movieRating}</p>
                                     <div class="flex gap-5 text-gray-300">
-                                        <button class="bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-700">-</button>
+                                        <button data-index="${index}" class="decrement-btn w-8 h-8 rounded-full flex justify-center items-center cursor-pointer bg-gray-800 hover:bg-gray-700">-</button>
                                         <div>${item.quantity}</div>
-                                        <button class="bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-700">+</button>  
+                                        <button data-index="${index}" class="increment-btn w-8 h-8 rounded-full flex justify-center items-center cursor-pointer bg-gray-800 hover:bg-gray-700 ${item.quantity >= 10 ? 'opacity-50 cursor-not-allowed' : ''}"
+                                        ${item.quantity >= 10 ? 'disabled' : ''}">+</button>  
                                     </div>    
                                 </div>
                             </div>
@@ -144,9 +145,41 @@
 
             // Event delegation for remove buttons
             cart_container.addEventListener('click', (e) => {
-                if (e.target.closest('.remove-btn')) {
-                    const index = parseInt(e.target.closest('.remove-btn').dataset.index);
-                    handleRemoveItem(index);
+                const cart = loadCart();
+                let shouldUpdate = false;
+                const MAX_QUANTITY = 10;
+    
+                // Remove Button
+                const removeBtn = e.target.closest('.remove-btn');
+                if (removeBtn) {
+                    const index = parseInt(removeBtn.dataset.index);
+                    cart.splice(index, 1);
+                    shouldUpdate = true;
+                }
+
+                // Quantity Buttons
+                const quantityBtn = e.target.closest('[data-index]'); // Fetch +/- buttons
+                if (quantityBtn && !removeBtn) {  // Not Double-handle remove clicks
+                    const index = parseInt(quantityBtn.dataset.index);
+        
+                    if (quantityBtn.classList.contains('increment-btn')) {
+                        if (cart[index].quantity < MAX_QUANTITY) {  // Only increment if below max
+                            cart[index].quantity += 1;
+                            shouldUpdate = true;
+                        }
+                    }
+                    else if (quantityBtn.classList.contains('decrement-btn')) {
+                        cart[index].quantity -= 1;
+                        if (cart[index].quantity < 1) {
+                            cart.splice(index, 1);
+                        }
+                        shouldUpdate = true;
+                    }
+                }
+
+                if (shouldUpdate) {
+                    localStorage.setItem('movieCart', JSON.stringify(cart));
+                    showCart();
                 }
             });
 

@@ -1,12 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="./src/output.css">
 </head>
+
 <body>
-    
+
+    <!-- Header -->
+    <header id="header" class="bg-gray-800 py-4 px-16 sticky top-0 z-20"></header>
+
+    <!-- Cart section -->
+    <section class="mt-10">
+        <div class="container mx-auto px-16 flex flex-col gap-10">
+            <div>
+                <h1 class="text-4xl font-semibold"><span class="text-red-600 mr-3">Your</span>Movie Cart</h1>
+                <!-- If cart is empty -->
+                <div class="flex mt-5">
+                    <p id="empty-message" class="hidden text-lg">Your cart is empty</p>
+                    <p id="items-selected" class="hidden text-lg self-end"></p>
+                </div>
+            </div>
+            <!-- Cart items -->
+            <div id="cart-items"></div>
+
+            <!-- Total cart -->
+            <div id="total-cart" class="hidden">
+                <div class="flex flex-col gap-3">
+                    <p>Total: <span id="total-price">0.00</span></p>
+                    <button id="checkout-btn"
+                        class="w-52 bg-gray-500 py-2 px-4 cursor-pointer hover:bg-gray-700 rounded-lg">Proceed to
+                        Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import Header from "./components/header.js";
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize header
+            const header_container = document.querySelector('#header');
+            if (header_container) Header(header_container);
+
+            // Initialize cart functionality
+            initCart();
+        });
+
+        function initCart() {
+            // DOM elements
+            const cart_container = document.getElementById('cart-items');
+            const empty_msg = document.getElementById('empty-message');
+            const items_selected = document.getElementById('items-selected');
+            const totalCart_container = document.getElementById('total-cart');
+            const checkout_btn = document.getElementById('checkout-btn');
+
+            // Verify all required elements exist
+            if (!cart_container || !empty_msg || !totalCart_container || !checkout_btn) {
+                console.error('Critical cart elements missing');
+                return;
+            }
+
+            // Load cart from localStorage
+            function loadCart() {
+                try {
+                    return JSON.parse(localStorage.getItem('movieCart')) || [];
+                } catch (e) {
+                    console.error('Error loading cart:', e);
+                    return [];
+                }
+            }
+
+            // Display cart items
+            function showCart() {
+                const cart = loadCart();
+
+                // Clear existing items
+                cart_container.innerHTML = ``;
+
+                if (cart.length === 0) {
+                    empty_msg.classList.remove('hidden');
+                    items_selected.classList.add('hidden');
+                    totalCart_container.classList.add('hidden');
+                    return;
+                }
+
+                empty_msg.classList.add('hidden');
+                items_selected.classList.remove('hidden');
+                totalCart_container.classList.remove('hidden');
+
+                // Total items selected function
+                const totalQuantity = cart.reduce((sum, item) => { return sum + item.quantity }, 0);
+                items_selected.innerHTML = `${totalQuantity} ${totalQuantity === 1 ? 'item' : 'items'}`;
+
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'pb-4';
+                    itemDiv.innerHTML = `
+                        <div class="flex justify-between bg-gray-900 py-7 px-7 rounded-lg">
+                            <div class="flex gap-5">
+                                <img src="${item.image}" alt="${item.title}" class="w-32 rounded-lg">
+                                <div class="flex flex-col gap-7">
+                                    <p class="text-gray-300 text-2xl font-semibold">${item.title}</p>
+                                    <p>⭐${item.movieRating}</p>
+                                    <div class="flex gap-5 text-gray-300">
+                                        <button class="bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-700">-</button>
+                                        <div>${item.quantity}</div>
+                                        <button class="bg-gray-800 w-8 h-8 rounded-full flex justify-center items-center cursor-pointer hover:bg-gray-700">+</button>  
+                                    </div>    
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-7">
+                                <button data-index="${index}" class="remove-btn self-end text-red-600 hover:text-red-800">
+                                    <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z"/></svg>
+                                </button>
+                                <p class="text-gray-300">€${item.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    `;
+                    cart_container.appendChild(itemDiv);
+                    total += item.price * item.quantity;
+                });
+
+                document.getElementById('total-price').textContent = total.toFixed(2);
+            }
+
+            // Remove item handler (using event delegation)
+            function handleRemoveItem(index) {
+                const cart = loadCart();
+                if (index >= 0 && index < cart.length) {
+                    cart.splice(index, 1);
+                    localStorage.setItem('movieCart', JSON.stringify(cart));
+                    showCart();
+                }
+            }
+
+            // Event delegation for remove buttons
+            cart_container.addEventListener('click', (e) => {
+                if (e.target.closest('.remove-btn')) {
+                    const index = parseInt(e.target.closest('.remove-btn').dataset.index);
+                    handleRemoveItem(index);
+                }
+            });
+
+            // Checkout handler
+            checkout_btn.addEventListener('click', () => {
+                alert('Order placed successfully!');
+                localStorage.removeItem('movieCart');
+                showCart();
+            });
+
+            // Initial cart display
+            showCart();
+        }
+    </script>
 </body>
+
 </html>

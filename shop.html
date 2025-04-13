@@ -20,14 +20,22 @@
 
 
   <!-- MOVIES - API SHOW -->
-  <section class="pt-20 pb-14">
+  <section class="pt-20 pb-20">
     <div class="container mx-auto px-16">
       <div class="flex flex-col justify-center items-center mb-20">
-        <h1 class="text-4xl uppercase mb-5">Cinematic Collection</h1>
-        <span class="lg:w-[780px] text-center text-red-600 rounded-lg py-3 px-3">Browse our curated selection of films—from timeless classics to the latest blockbusters. Own your favorites in 4K UHD, Blu-ray, or digital formats. Limited editions, exclusive bundles, and collector’s sets await!</span>
+        <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-6 tracking-tight">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-500">Cinematic Collection</span>
+        </h1>
+        <p class="text-xl font-normal mb-6 text-center">
+          Discover cinematic excellence in every format
+        </p>
+        <div class="lg:w-[850px] p-8 text-center rounded-lg bg-gradient-to-r bg-gray-800 to-gray-700">
+          <span class="text-gray-200">Browse our curated selection of films—from timeless classics to the latest blockbusters. Own your favorites in <span class="text-orange-600">4K UHD</span>, <span class="text-blue-600">Blu-ray</span>, or <span class="text-purple-600">digital formats</span>. Limited editions, exclusive bundles, and collector’s sets await!</span>
+        </div>
       </div>
-      <div class="flex justify-between items-center mb-7">
-        
+
+
+      <div class="flex flex-col sm:flex-row justify-between items-center mb-7 gap-6">
         <!-- PREVIOUS/NEXT BUTTONS -->
         <div class="flex gap-3" id="pagination">
           <button class="shop-next-prev-button" id="prev">Prev</button>
@@ -45,13 +53,13 @@
           </div>
         </div>
       </div>
-      <div id="movies" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+      <div id="movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
     </div>
   </section>
 
 
   <!-- CTA SECTION - SOCIAL MEDIA -->
-  <section id="social-media" class="py-6"></section>
+  <section id="social-media"></section>
 
   <!-- FOOTER -->
   <footer id="footer" class="bg-gray-800"></footer>

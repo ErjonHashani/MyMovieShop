@@ -25,13 +25,15 @@
   <!-- LATEST MOVIE - API SHOW -->
   <section class="pt-20 pb-14">
     <div class="container mx-auto px-16">
-      <h2 class="text-center text-gray-600 text-4xl mb-2 uppercase font-semibold">Latest Movies</h2>
-      <p class="text-center text-orange-600 mb-16">Watch the latest movies of 2025</p>
-      <div id="latest-movies" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-4 tracking-tight text-center">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 uppercase tracking-wide">Latest Movies</span>
+      </h1>
+      <p class="text-center text-red-600 mb-16 flex gap-1 items-center justify-center">Watch the latest movies of 2025 <span><svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448 32l-86.1 0-1 1-127 127 92.1 0 1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128l0-64c0-15.1-5.3-29.1-14-40l-104 104L512 160zM294.1 32l-92.1 0-1 1L73.9 160l92.1 0 1-1 127-127zM64 32C28.7 32 0 60.7 0 96l0 64 6.1 0 1-1 127-127L64 32zM512 192L0 192 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-224z"/></svg></span></p>
+      <div id="latest-movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
     </div>
     <div class="flex justify-center items-center mt-14">
       <a href="shop.html"
-        class="flex gap-2 justify-center items-center bg-gray-800 text-white py-4 px-6 hover:bg-gray-500 duration-500 rounded-full">Shop
+        class="flex gap-2 justify-center items-center bg-gray-800 text-gray-200 py-4 px-6 hover:bg-gray-800/90 duration-500 rounded-lg">Shop
         movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path
             d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
@@ -40,7 +42,7 @@
   </section>
 
   <!-- ABOUT US -->
-  <section class="bg-gray-600 py-16">
+  <section class="bg-gray-800 py-16">
     <div class="container mx-auto px-16 lg:flex lg:gap-10 text-gray-200 items-center">
       <img
         src="https://media.istockphoto.com/id/956161134/photo/man-using-credit-card-to-pay-for-video-on-demand-service.jpg?s=612x612&w=0&k=20&c=du3jhi7DD1q8PdNNCVevW_Ytwj9kaI-5U96pCV9DswA="
@@ -92,10 +94,10 @@
   </section>
 
   <!-- CTA SECTION - SOCIAL MEDIA -->
-  <section id="social-media" class="py-6"></section>
+  <section id="social-media"></section>
 
   <!-- FOOTER -->
-  <footer id="footer" class="bg-gray-800"></footer>
+  <footer id="footer" class="bg-gradient-to-b from-gray-800 to-gray-900"></footer>
 
 
   <!-- <script src="./api/api.js"></script> -->
@@ -121,7 +123,7 @@
 
 
     // Latest Movies Section
-    movies(1, latest_movies_container, 8)
+    movies(1, latest_movies_container, 12)
 
 
 

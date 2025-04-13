@@ -1,7 +1,7 @@
 function Social(social_container) {
     social_container.innerHTML = `
-        <div class="container mx-auto px-16">
-            <div class="flex justify-center items-center">
+        <div class="overflow-hidden">
+            <div class="flex">
         <!-- Facebook -->
         <div class="bg-blue-600 social-btn">
           <a href="https://www.facebook.com/erjon.hashani/" target="_blank" class="social-btn-link">

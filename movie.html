@@ -364,6 +364,8 @@
                     const movieId = new URLSearchParams(window.location.search).get('id');
                     const movieTitle = document.querySelector('h1').textContent.split(' (')[0];
                     const movieRating = Math.floor(movie.vote_average * 10) / 10;
+                    const formattedRuntime = formatRuntime(movie.runtime);
+                    const genre = movie.genres[0]?.name || 'No genre';
 
                     // Get existing cart FIRST
                     let cart = JSON.parse(localStorage.getItem('movieCart')) || [];
@@ -382,10 +384,12 @@
                             price: price,
                             quantity: quantity,
                             image: imageUrl,
-                            vote: movieRating
+                            vote: movieRating,
+                            runtime: formattedRuntime,
+                            genre: genre,
                         });
                     }
-
+                    
                     localStorage.setItem('movieCart', JSON.stringify(cart));
 
                     // Notification popup

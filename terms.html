@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon Basic -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+
+    <!-- Apple Devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
     <title>Terms | MyMovieShop</title>
     <link rel="stylesheet" href="./src/output.css">
 </head>
+
 <body class="bg-gray-100 min-h-screen p-4 md:p-8">
-    
+
     <!-- Header -->
     <header class="max-w-4xl mx-auto mb-8">
         <div class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 512 512">
-                <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256-96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/>
+                <path
+                    d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256-96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
             </svg>
             <span class="font-light tracking-wider">MYMOVIE<span class="font-medium">SHOP</span></span>
         </div>
@@ -26,7 +41,8 @@
         <div class="prose prose-sm max-w-none text-gray-700 space-y-5">
             <section>
                 <h2 class="text-lg font-semibold text-gray-800">1. Project Nature</h2>
-                <p>MyMovieShop is a <strong>static front-end demonstration</strong> created for portfolio/educational purposes. No real transactions or user accounts exist.</p>
+                <p>MyMovieShop is a <strong>static front-end demonstration</strong> created for portfolio/educational
+                    purposes. No real transactions or user accounts exist.</p>
             </section>
 
             <section>
@@ -42,7 +58,8 @@
 
             <section>
                 <h2 class="text-lg font-semibold text-gray-800">3. No Data Collection</h2>
-                <p>We do <strong>not</strong> collect, store, or process personal information. Any entered data exists only temporarily in your browser.</p>
+                <p>We do <strong>not</strong> collect, store, or process personal information. Any entered data exists
+                    only temporarily in your browser.</p>
             </section>
 
             <section>
@@ -50,21 +67,25 @@
                 <p>To remove all demo data:</p>
                 <ol class="list-decimal pl-5 space-y-1">
                     <li>Open browser developer tools (F12)</li>
-                    <li>Navigate to <code class="bg-gray-100 px-1 rounded">Application → Storage → Local Storage</code></li>
+                    <li>Navigate to <code class="bg-gray-100 px-1 rounded">Application → Storage → Local Storage</code>
+                    </li>
                     <li>Right-click the domain and select "Clear"</li>
                 </ol>
             </section>
 
             <section>
                 <h2 class="text-lg font-semibold text-gray-800">5. Disclaimer</h2>
-                <p>This is <strong>not a real service</strong>. Movie listings, prices, and other content are placeholder data.</p>
+                <p>This is <strong>not a real service</strong>. Movie listings, prices, and other content are
+                    placeholder data.</p>
             </section>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="max-w-4xl mx-auto mt-8 text-center text-xs text-gray-500">
-        <p>© <span id="currentYear"></span> MyMovieShop | Data provided by <a class="text-blue-500 hover:text-blue-600 duration-100" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
+        <p>© <span id="currentYear"></span> MyMovieShop | Data provided by <a
+                class="text-blue-500 hover:text-blue-600 duration-100" href="https://www.themoviedb.org/"
+                target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
     </footer>
 
     <script>
@@ -72,4 +93,5 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>

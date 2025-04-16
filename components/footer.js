@@ -3,7 +3,7 @@
 function Footer(footer_container) {
 
     footer_container.innerHTML = `
-        <div class="container mx-auto px-10 sm:px-16 py-10">
+        <div class="container mx-auto px-8 sm:px-16 py-10">
             <div class="text-gray-200 md:flex justify-between items-center">
                 <!-- Title and info -->
                 <div class="w-80 mb-5">

@@ -4,16 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/output.css" rel="stylesheet">
 
-  <title>Shop</title>
+  <!-- Favicon Basic -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+
+  <!-- Apple Devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+
+  <!-- PWA Support -->
+  <link rel="manifest" href="/favicon/site.webmanifest">
+
+  <link href="./src/output.css" rel="stylesheet">
+  <title>Shop | MyMovieShop</title>
 </head>
 
 <body>
 
 
   <!-- HEADER -->
-  <header id="header" class="bg-gray-800 py-4 px-10 sm:px-16 sticky top-0 z-20"></header>
+  <header id="header" class="bg-gray-800 py-4 px-8 sm:px-16 sticky top-0 z-20"></header>
 
 
 
@@ -24,13 +35,17 @@
     <div class="container mx-auto px-10 sm:px-16">
       <div class="flex flex-col justify-center items-center mb-20">
         <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-6 tracking-tight">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-500">Cinematic Collection</span>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-500">Cinematic
+            Collection</span>
         </h1>
         <p class="text-xl font-normal mb-6 text-center">
           Discover cinematic excellence in every format
         </p>
         <div class="lg:w-[850px] p-8 text-center rounded-lg bg-gradient-to-r bg-gray-800 to-gray-700">
-          <span class="text-gray-200">Browse our curated selection of films—from timeless classics to the latest blockbusters. Own your favorites in <span class="text-orange-600">4K UHD</span>, <span class="text-blue-600">Blu-ray</span>, or <span class="text-purple-600">digital formats</span>. Limited editions, exclusive bundles, and collector's sets await!</span>
+          <span class="text-gray-200">Browse our curated selection of films—from timeless classics to the latest
+            blockbusters. Own your favorites in <span class="text-orange-600">4K UHD</span>, <span
+              class="text-blue-600">Blu-ray</span>, or <span class="text-purple-600">digital formats</span>. Limited
+            editions, exclusive bundles, and collector's sets await!</span>
         </div>
       </div>
 
@@ -44,7 +59,8 @@
         </div>
         <!-- SEARCH BAR -->
         <div class="flex">
-          <input type="search" name="search" id="search" placeholder="Search..." class="py-2 pl-5 pr-10 text-gray-600 rounded-l-md border-1 border-gray-400 focus-visible:outline-none">
+          <input type="search" name="search" id="search" placeholder="Search..."
+            class="py-2 pl-5 pr-10 text-gray-600 rounded-l-md border-1 border-gray-400 focus-visible:outline-none">
           <button type="submit" class="bg-gray-800 rounded-r-md flex px-4 cursor-pointer">
             <svg class="size-4 fill-white self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
@@ -94,29 +110,29 @@
     // Variables
     let page = 1;
     active_page_container.innerHTML = page;
-    
+
 
 
     // Movies Section
     movies(page, movies_container)
 
     // Next and Prev
-    next_btn.addEventListener('click', function(e){
+    next_btn.addEventListener('click', function (e) {
       page++;
       movies(page, movies_container);
       active_page_container.innerHTML = page;
     });
 
-    prev_btn.addEventListener('click', function(e){
-      if(page > 1){
+    prev_btn.addEventListener('click', function (e) {
+      if (page > 1) {
         page--;
-      } 
+      }
       movies(page, movies_container);
       active_page_container.innerHTML = page;
     });
 
     // Search
-    search_input.addEventListener('keyup', function(e) {
+    search_input.addEventListener('keyup', function (e) {
       switch (e.keyCode) {
         case 13:
           pagination_container.style.display = 'hidden';

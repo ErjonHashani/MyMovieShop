@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon Basic -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+
+    <!-- Apple Devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+
     <title>Login | MyMovieShop</title>
     <link rel="stylesheet" href="./src/output.css">
 </head>
+
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
     <!-- Main Container -->
     <div class="w-full max-w-6xl flex flex-col md:flex-row-reverse shadow-xl rounded-lg overflow-hidden">
-        
+
         <!-- Right Side / Welcome Section -->
         <div class="relative w-full md:w-1/2 bg-gradient-to-b from-red-500 via-red-600 to-red-700 min-h-[400px]">
             <!-- Background Pattern -->
             <div class="absolute inset-0 bg-[url('../assets/images/registerVector.jpg')] bg-cover opacity-10"></div>
-            
+
             <!-- Content Container -->
             <div class="relative z-10 h-full flex flex-col p-8 text-white">
                 <!-- Logo -->
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 512 512">
-                        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256-96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/>
+                        <path
+                            d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256-96a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
                     </svg>
                     <span class="font-light tracking-wider">MYMOVIE<span class="font-medium">SHOP</span></span>
                 </div>
-                
+
                 <!-- Welcome Content -->
-                <div class="mt-14 sm:m-auto text-center px-4">
+                <div class="mt-14 md:m-auto text-center px-4">
                     <p class="text-lg mb-3 font-medium">Nice to see you again</p>
                     <h1 class="text-4xl font-bold uppercase mb-6">Welcome Back</h1>
                     <div class="w-16 h-1 bg-white bg-opacity-50 mx-auto my-4 rounded-full"></div>
@@ -37,50 +53,69 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Left Side / Login Form -->
         <div class="w-full md:w-1/2 bg-white p-8 md:p-12 flex flex-col justify-center">
             <div class="mb-8">
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">Sign In</h1>
                 <p class="text-gray-600">Access your account to continue</p>
             </div>
-            
+
             <form id="loginForm" class="space-y-5" novalidate>
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                    <input type="text" name="email" id="email" class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-red-500">
-                    <p id="emailError" class="hidden text-base font-light py-2 text-red-500">Enter a valid email addres</p>
+                    <input type="text" name="email" id="email"
+                        class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-red-500">
+                    <p id="emailError" class="hidden text-base font-light py-2 text-red-500">Enter a valid email address
+                    </p>
                 </div>
-                
+
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <input type="password" name="password" id="password" class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-red-500">
-                    <p id="passwordError" class="hidden text-base font-light py-2 text-red-500">Password must be at least 8 characters</p>
+                    <input type="password" name="password" id="password"
+                        class="w-full px-4 py-2 border-b border-gray-300 focus:outline-none focus:border-red-500">
+                    <p id="passwordError" class="hidden text-base font-light py-2 text-red-500">Password must be at
+                        least 8 characters</p>
                 </div>
-                
+
                 <div class="flex items-center justify-between pt-2">
                     <div class="flex items-center">
-                        <input id="remember" name="remember" type="checkbox" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                        <input id="remember" name="remember" type="checkbox"
+                            class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
                         <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
                     </div>
                     <a href="#" class="text-sm text-red-600 hover:text-red-500">Forgot password?</a>
                 </div>
-                
-                <button type="submit" class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium">
+
+                <button type="submit"
+                    class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium">
                     SIGN IN NOW
                 </button>
-                
+
                 <div class="text-center text-sm text-gray-500 pt-2">
-                    Don't have an account? <a href="register.html" class="text-red-600 hover:text-red-500 font-medium">Register</a>
+                    Don't have an account? <a href="register.html"
+                        class="text-red-600 hover:text-red-500 font-medium">Register</a>
                 </div>
             </form>
         </div>
     </div>
 
+    <!-- Go back button -->
+    <section class="fixed top-5 sm:top-6 right-5 lg:left-5">
+        <button onclick="history.back()"
+            class="relative w-5 h-5 p-5 flex items-center justify-center cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 duration-150 text-white rounded-full">
+            <span><svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path
+                        d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z" />
+                </svg></span>
+            <div class="absolute w-5 h-5 p-5 bg-blue-200/80 rounded-full -z-10 animate-ping"></div>
+        </button>
+    </section>
+
     <script>
         const form = document.querySelector('#loginForm');
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
 
             const emailInput = document.querySelector('#email');
@@ -101,7 +136,7 @@
                 emailError.textContent = 'Email address is required';
                 emailError.classList.remove('hidden');
                 isValid = false;
-            }else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)){
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
                 emailError.textContent = 'Enter a valid email address';
                 emailError.classList.remove('hidden');
                 isValid = false;
@@ -111,7 +146,7 @@
                 passwordError.textContent = 'Password is required';
                 passwordError.classList.remove('hidden');
                 isValid = false;
-            }else if(passwordInput.value.length < 8) {
+            } else if (passwordInput.value.length < 8) {
                 passwordError.textContent = 'Password must be at least 8 characters';
                 passwordError.classList.remove('hidden');
                 isValid = false;
@@ -128,9 +163,10 @@
                 this.submit();
             }
         });
-        
-        
+
+
 
     </script>
 </body>
+
 </html>

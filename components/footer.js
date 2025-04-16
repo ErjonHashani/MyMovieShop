@@ -3,7 +3,7 @@
 function Footer(footer_container) {
 
     footer_container.innerHTML = `
-        <div class="container mx-auto px-16 py-10">
+        <div class="container mx-auto px-10 sm:px-16 py-10">
             <div class="text-gray-200 md:flex justify-between items-center">
                 <!-- Title and info -->
                 <div class="w-80 mb-5">
@@ -43,11 +43,13 @@ function Footer(footer_container) {
                     <a href="#" class="hover:text-gray-300">Cookies</a>
                 </div>
                 <p class="text-sm sm:text-normal text-gray-200">
-                    &copy; 2025 MyMovieShop. All rights reserved. Data provided by <a class="text-blue-500 hover:text-blue-600 duration-100" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.
+                    &copy; <span id="currentYear"></span> MyMovieShop. All rights reserved. Data provided by <a class="text-blue-500 hover:text-blue-600 duration-100" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.
                 </p>
             </div>
         </div>
     `;
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 }
 
 export default Footer;

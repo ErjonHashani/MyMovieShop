@@ -65,7 +65,7 @@
                 <div class="flex items-center pt-2">
                     <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                     <label for="terms" class="ml-2 block text-sm text-gray-700">
-                        I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Terms</a> and <a href="#" class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
+                        I agree to the <a href="terms.html" target="_blank" class="text-blue-600 hover:text-blue-500">Terms</a> and <a href="privacy.html" target="_blank" class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
                     </label>
                 </div>
                 
@@ -79,5 +79,14 @@
             </form>
         </div>
     </div>
+
+    
+    <!-- Go back button -->
+    <section class="fixed top-5 sm:top-6 right-5 lg:left-5">
+        <button onclick="history.back()" class="relative w-5 h-5 p-5 flex items-center justify-center cursor-pointer bg-gray-400/50 hover:bg-gray-500/50 duration-150 text-white rounded-full">
+            <span><svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z"/></svg></span>
+            <div class="absolute w-5 h-5 p-5 bg-blue-200/80 rounded-full -z-10 animate-ping"></div>
+        </button>
+    </section>
 </body>
 </html>

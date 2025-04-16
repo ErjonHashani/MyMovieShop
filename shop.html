@@ -13,7 +13,7 @@
 
 
   <!-- HEADER -->
-  <header id="header" class="bg-gray-800 py-4 px-16 sticky top-0 z-20"></header>
+  <header id="header" class="bg-gray-800 py-4 px-10 sm:px-16 sticky top-0 z-20"></header>
 
 
 
@@ -21,7 +21,7 @@
 
   <!-- MOVIES - API SHOW -->
   <section class="pt-20 pb-20">
-    <div class="container mx-auto px-16">
+    <div class="container mx-auto px-10 sm:px-16">
       <div class="flex flex-col justify-center items-center mb-20">
         <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-6 tracking-tight">
           <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-500">Cinematic Collection</span>
@@ -35,7 +35,7 @@
       </div>
 
 
-      <div class="flex flex-col sm:flex-row justify-between items-center mb-7 gap-6">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-7 gap-6">
         <!-- PREVIOUS/NEXT BUTTONS -->
         <div class="flex gap-3" id="pagination">
           <button class="shop-next-prev-button" id="prev">Prev</button>
@@ -43,14 +43,14 @@
           <button class="shop-next-prev-button" id="next">Next</button>
         </div>
         <!-- SEARCH BAR -->
-        <div class="flex justify-center ">
+        <div class="flex">
           <input type="search" name="search" id="search" placeholder="Search..." class="py-2 pl-5 pr-10 text-gray-600 rounded-l-md border-1 border-gray-400 focus-visible:outline-none">
-          <div class="bg-gray-800 rounded-r-md flex px-4 cursor-pointer">
+          <button type="submit" class="bg-gray-800 rounded-r-md flex px-4 cursor-pointer">
             <svg class="size-4 fill-white self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
             </svg>
-          </div>
+          </button>
         </div>
       </div>
       <div id="movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>

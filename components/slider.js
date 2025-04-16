@@ -12,7 +12,7 @@ let active_image = 1;
 export default function Slider(container) {
     setInterval(() => {
         container.innerHTML = `
-            <img src="${images[active_image]}" alt="Slider image" class="w-full h-[150px] sm:h-[250px] lg:h-[400px] xl:h-[450px] object-center"/>
+            <img src="${images[active_image]}" alt="Slider image" class="w-full h-[170px] sm:h-[250px] md:h-[300px] lg:h-[400px] xl:h-[450px] object-center"/>
         `;
 
         

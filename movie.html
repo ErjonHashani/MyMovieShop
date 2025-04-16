@@ -17,7 +17,7 @@
 
     <!-- SPECIFIC MOVIE -->
     <main class="flex-grow invisible-until-loaded">
-        <section class="py-20 min-h-[70vh] container mx-auto px-16">
+        <section class="py-20 min-h-[70vh] container mx-auto px-10 sm:px-16">
             <div id="movie"></div>
         </section>
     </main>
@@ -36,12 +36,12 @@
 
             <div class="flex flex-col justify-center items-center gap-2">
                 <div class="">
-                    <p class="text-gray-200 font-semibold text-4xl">Your<span class="text-red-600"> Personal
+                    <p class="text-gray-200 font-semibold text-2xl sm:text-4xl">Your<span class="text-red-600"> Personal
                             Theater</span>
                     </p>
                 </div>
                 <div>
-                    <p class="text-gray-300 font-normal text-lg">Unlock your order history and saved favorites </pc>
+                    <p class="text-gray-300 font-normal text-base sm:text-lg text-center">Unlock your order history and saved favorites </pc>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
             </div>
 
             <div>
-                <p class="text-gray-400 text-sm font-thin">Secured with 256-bit encryption • No payment info required
+                <p class="text-gray-400 text-sm font-thin text-center">No payment info required
                 </p>
             </div>
         </div>
@@ -147,8 +147,10 @@
                                 alt="${movie.original_title}">    
                         </div>
                         <div class="flex flex-col gap-4">
-                            <h1 class="text-4xl mb-5 font-bold text-gray-100">${movie.original_title} <sup class="text-base font-normal">(${year})</sup></h1>
-                            <div class="flex gap-3 items-center">
+
+                            <h1 class="text-2xl sm:text-4xl mb-5 self-center sm:self-start font-bold text-gray-100">${movie.original_title} <sup class="text-base font-normal">(${year})</sup></h1>
+
+                            <div class="flex flex-wrap sm:flex-row gap-3 justify-center sm:justify-start items-start sm:items-center">
                                 <div class="min-w-[3rem]">
                                     <span id="ratingCircle" class="inline-grid place-items-center w-12 h-12 border-2 rounded-full aspect-square text-center leading-none">${Math.floor(movie.vote_average * 10) / 10}</span>
                                 </div>
@@ -164,7 +166,7 @@
                                 <h3 class="text-2xl">Overview</h3>
                                 <p class="font-thin xl:pr-60 text-gray-100">${movie.overview}</p>  
                             </div>
-                            <div class="grid sm:grid-cols-3 gap-y-5 my-5">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-5 sm:gap-y-5 my-5">
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Original Title</h3><p>${movie.original_title}</p></div>
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Release Date</h3><p>${formatReleaseDate(movie.release_date)}</p></div> 
                                 <div class="flex flex-col gap-2">
@@ -174,27 +176,27 @@
                                         <span class="text-yellow-400">&euro;</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-col gap-2 pr-20"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ') || "No data"}</p></div> 
+                                <div class="flex flex-col gap-2 sm:pr-10"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Production</h3><p>${movie.production_companies.map(company => company.name).join(', ') || "No data"}</p></div> 
                                 <div class="flex flex-col gap-2"><h3 class="font-bold text-lg text-red-700 text-shadow-sm">Language</h3><p>${movie.spoken_languages.map(language => language.english_name).join(', ')}</p></div>
                             </div>
-                            <div class="flex flex-col sm:flex-row items-baseline sm:items-center gap-2">
-                                <button class="py-3 px-5 flex gap-2 justify-center items-center cursor-pointer bg-red-700 text-white font-semibold rounded-lg hover:bg-red-500 duration-150">
+                            <div class="flex sm:flex-row items-baseline sm:items-center gap-2 text-sm">
+                                <button class="py-4 sm:py-3 px-5 flex gap-2 justify-center items-center cursor-pointer bg-red-700 text-white font-semibold rounded-lg hover:bg-red-500 duration-150">
                                     <svg class="w-4 h-4" fill="white" xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 512 512"><path d="M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c-7.6 4.2-12.3 12.3-12.3 20.9l0 176c0 8.7 4.7 16.7 12.3 20.9s16.8 4.1 24.3-.5l144-88c7.1-4.4 11.5-12.1 11.5-20.5s-4.4-16.1-11.5-20.5l-144-88c-7.4-4.5-16.7-4.7-24.3-.5z"/></svg> 
                                     Watch Trailer
                                 </button>
                                 
                                 <!-- ADD TO CART FORM -->
                                 <form id="addCardForm" action="#" class="flex flex-col sm:flex-row items-center gap-2">
-                                    <button id="addCart" class="flex items-center gap-2 bg-gray-700 text-white font-semibold py-3 px-5 hover:bg-gray-600 duration-150 rounded-lg">
+                                    <button id="addCart" class="flex items-center gap-2 bg-gray-700 text-white font-semibold py-4 sm:py-3 px-6 hover:bg-gray-600 duration-150 rounded-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.4.4-.7 1-.7 1.7V20a2 2 0 002 2h14"/>
                                         </svg> 
                                         Add to cart
                                     </button>
                                     <div class="bg-gray-700 rounded-lg border-1 border-gray-400">
-                                        <button id="minusButton" class="w-7 bg-gray-400 py-3 text-gray-800 cursor-pointer rounded-tl-lg rounded-bl-lg hover:bg-gray-400/90">-</button>
+                                        <button id="minusButton" class="w-7 bg-gray-400 py-4 sm:py-3 text-gray-800 cursor-pointer rounded-tl-lg rounded-bl-lg hover:bg-gray-400/90">-</button>
                                         <input class="w-20 bg-gray-700 py-3 pl-8" type="number" min="1" max="10" value="1">
-                                        <button id="plusButton" class="w-7 bg-gray-400 py-3 text-gray-800 cursor-pointer rounded-tr-lg rounded-br-lg hover:bg-gray-400/90"">+</button> 
+                                        <button id="plusButton" class="w-7 bg-gray-400 py-4 sm:py-3 text-gray-800 cursor-pointer rounded-tr-lg rounded-br-lg hover:bg-gray-400/90"">+</button> 
                                     </div>
                                 </form>
                                 

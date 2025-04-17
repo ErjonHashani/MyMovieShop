@@ -78,6 +78,8 @@
                         class="w-auto py-3 cursor-pointer text-gray-300 font-bold bg-red-600 hover:bg-red-600/80 duration-150 rounded-lg">
                         Proceed to Checkout
                     </button>
+                    <p id="proceedError" class="hidden text-base font-light py-2 text-red-500">You need to be signed in
+                        to proceed</p>
                     <div
                         class="font-normal text-sm text-gray-500 text-center pt-3 flex items-center justify-center gap-2">
                         <div><svg class="w-3 h-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +136,7 @@
             function updateCart(cart, needsHeaderUpdate = false) {
                 localStorage.setItem('movieCart', JSON.stringify(cart));
                 showCart();
-                
+
                 // Only update header if specifically requested
                 if (needsHeaderUpdate && header_container) {
                     Header(header_container);
@@ -258,9 +260,52 @@
             });
 
             // Checkout handler
-            checkout_btn.addEventListener('click', () => {
-                alert('Order placed successfully!');
+            checkout_btn.addEventListener('click', async () => {
+                const proceedError = document.getElementById('proceedError');
+                proceedError.classList.add('hidden');
+
+                // Is user logged in
+                const userData = JSON.parse(localStorage.getItem('currentUser'));
+                if (!userData) {
+                    proceedError.textContent = "You need to be signed in to proceed";
+                    proceedError.classList.remove('hidden');
+                    return; // Stop execution if not signed in
+                }
+
+                // Load cart and checked if empty
+                const cart = loadCart();
+                if (cart.length === 0) {
+                    proceedError.textContent = "Your cart is empty";
+                    proceedError.classList.remove('hidden');
+                    return;
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                const receipt = {
+                    receiptNumber: 'MOV' + Date.now().toString().slice(-6),
+                    date: new Date().toLocaleString(),
+                    customer: userData.name,
+                    items: cart.map(item => ({
+                        title: item.title,
+                        quantity: item.quantity,
+                        price: item.price,
+                        subtotal: (item.price * item.quantity).toFixed(2)
+                    })),
+                    totalItems: cart.reduce((sum, item) => sum + item.quantity, 0),
+                    totalPrice: total.toFixed(2)
+                };
+
+                const previousReceipts = JSON.parse(localStorage.getItem('receiptsHistory')) || [];
+                previousReceipts.push(receipt);
+                localStorage.setItem('receiptsHistory', JSON.stringify(previousReceipts));
                 localStorage.removeItem('movieCart');
+
+                alert(`Payment successful!\nOrder #${receipt.receiptNumber}\nTotal: €${receipt.totalPrice}`);
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+
                 showCart();
                 if (header_container) Header(header_container);
             });

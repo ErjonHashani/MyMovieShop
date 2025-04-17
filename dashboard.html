@@ -21,25 +21,131 @@
 </head>
 
 <body>
-    <p id="timeRegistered" class="text-center text-sm text-gray-400"></p>
-    <section>
-        <div>
-            <p id="welcomeMessage"></p>
+
+    <header id="header" class="bg-gray-800 py-4 px-8 sm:px-16 sticky top-0 z-20"></header>
+
+    <main class="px-8 sm:px-16">
+        <div class="container mx-auto">
+            <section>
+                <div>
+                    <p id="timeRegistered" class="text-center text-sm text-gray-400 pt-2 pb-5"></p>
+                    <h1 class="pb-2 text-4xl font-bold text-red-700">Dashboard</h1>
+                    <p id="welcomeMessage" class="text-xl font-semibold text-gray-800"></p>
+                    <p class="pt-10 text-xl font-semibold uppercase text-gray-600 pb-2">Your receipts</p>
+                </div>
+            </section>
+            <section id="receipts" class="grid lg:grid-cols-2 gap-5 mb-5">
+
+            </section>
         </div>
+    </main>
+
     </section>
 
-    <script>
+    <script type="module">
+        // Import modules
+        import Header from './components/header.js';
+
         // DOM containers
         const timeOfRegistration = document.querySelector('#timeRegistered');
         const welcomeMessage = document.querySelector('#welcomeMessage');
+        const header_container = document.querySelector('#header');
+        const receipt_container = document.querySelector('#receipts');
 
+        Header(header_container);
 
-        const userData = JSON.parse(localStorage.getItem('userData'));
+        const userData = JSON.parse(localStorage.getItem('currentUser'));
+        if (!userData) {
+            window.location.href = 'login.html';
+        }
 
-        welcomeMessage.textContent = `Welcome ${userData.name}`;
+        welcomeMessage.textContent = `Welome ${userData.name}`;
         timeOfRegistration.textContent = `Registered at ${userData.registeredAt}`
 
-        console.log(userData);
+
+        // Get receipts from localStorage
+        const receipts = JSON.parse(localStorage.getItem('receiptsHistory')) || [];
+
+        // Render receipts
+        receipts.forEach(receipt => {
+            const email = userData.email;
+
+            // Random tax
+            const randomPrice = Number(localStorage.getItem('randomPrice')) || (Math.random() * 5).toFixed(2);
+            localStorage.setItem('randomPrice', randomPrice);
+
+            receipt_container.innerHTML += `
+                <section class="bg-gray-100 py-3 px-5 rounded-lg shadow-sm">
+                    <div class="flex justify-between items-center border-b-1 border-gray-400/30 pb-3">
+                        <div>
+                            <h1 class="text-lg font-bold uppercase"><span class="text-red-600">MyMovie</span>Shop</h1>
+                            <p class="text-gray-600 font-light">Order receipt</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <p class="text-gray-600 font-thin">Order <span class="text-gray-800 font-medium">#${receipt.receiptNumber}</span></p>
+                            <p class="text-gray-600 font-thin">${receipt.date}</p>    
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center border-b-1 border-gray-400/30 py-3">
+                        <div>
+                            <p class="text-gray-600 font-semibold">Customer: <span class="text-gray-800 font-normal">${receipt.customer}</span></p>
+                            <p class="text-gray-600 font-semibold">Email: <span class="text-gray-800 font-normal">${email}</span></p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-between gap-y-5 border-b-1 border-gray-400/30 py-3">
+                        ${receipt.items.map(item => `
+                            <div class="text-gray-800 flex justify-between">
+                                <div class="flex flex-col">
+                                    <p class="text-gray-800 text-lg font-semibold flex items-center gap-2">
+                                        <span class="text-gray-700"><svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448 32l-86.1 0-1 1-127 127 92.1 0 1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128l0-64c0-15.1-5.3-29.1-14-40l-104 104L512 160zM294.1 32l-92.1 0-1 1L73.9 160l92.1 0 1-1 127-127zM64 32C28.7 32 0 60.7 0 96l0 64 6.1 0 1-1 127-127L64 32zM512 192L0 192 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-224z"/></svg></span> 
+                                        ${item.title}
+                                    </p> 
+                                    <p class="text-gray-600 font-light">Qty: ${item.quantity}</p>   
+                                </div>
+                                <div class="flex flex-col items-end">
+                                    <span class="text-gray-600 font-light">&euro;${item.price}</span>
+                                    <span class="text-gray-700 font-normal text-lg">&euro;${item.subtotal}</span>        
+                                </div>
+                            </div>`).join('')}
+                    </div>
+                    <div class="pt-8 pb-1 border-b-1 border-gray-400/30">
+                        <div class="flex items-center justify-between">
+                            <p class="text-gray-600">Subtotal</p>
+                            <span class="text-gray-600">&euro;${receipt.totalPrice}</span>    
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <p class="text-gray-600">Tax</p>
+                            <span class="text-gray-600">&euro;${randomPrice}</span>       
+                        </div>
+                    </div>
+                    <div class="pt-1 flex justify-between items-center border-b-1 border-gray-400/30 pb-8">
+                        <p class="text-2xl font-bold text-gray-700">Total</p>
+                        <span class="text-2xl font-bold text-red-500">&euro;${(Number(receipt.totalPrice) + Number(randomPrice)).toFixed(2)}</span>    
+                    </div>
+                    <div class="text-center pt-5 pb-15">
+                        <p class="text-center text-gray-500">Thank you for your purchase! 🎉</p>
+                        <p class="text-center text-gray-500">Your movies are available to stream instantly.</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="email-btn px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow transition duration-150">Email Receipt</button>    
+                    </div>
+                </section>
+            `;
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('email-btn')) {
+                const receipt = e.target.closest('section');
+                const orderNumber = receipt.querySelector('.text-gray-800.font-medium').textContent;
+                const customerName = receipt.querySelector('.text-gray-800.font-normal').textContent;
+                const totalAmount = receipt.querySelector('.text-red-500').textContent;
+
+                const subject = `Your Movie Receipt ${orderNumber}`;
+                const body = `Hello ${customerName},\n\nThank you for your purchase!\n\n${receipt.innerText}\n\nTotal: ${totalAmount}\n\nYour movies are available to stream immediately.`;
+
+                window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            }
+        });
 
     </script>
 </body>

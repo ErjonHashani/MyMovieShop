@@ -100,7 +100,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium">
+                    class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium cursor-pointer">
                     CREATE ACCOUNT
                 </button>
 
@@ -205,22 +205,34 @@
 
             if (!isValid) return;
 
-            if (isValid) {
+            // If user already exists
+            const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+            const emailExists = existingUsers.some(user => user.email === emailInput.value.trim().toLowerCase());
 
-                // Information from register
-                const userData = {
-                    name: nameInput.value,
-                    email: emailInput.value.trim().toLowerCase(),
-                    password: passwordInput.value,
-                    registeredAt: new Date().toISOString()
-                };
-
-                // Information in localStorgae
-                localStorage.setItem('userData', JSON.stringify(userData));
-                
-                alert('Registered successfully')
-                window.location.href = 'dashboard.html';
+            if (emailExists) {
+                emailError.textContent = 'This email is already registered';
+                emailError.classList.remove('hidden');
+                return;
             }
+
+            // Information from register
+            const userData = {
+                name: nameInput.value,
+                email: emailInput.value.trim().toLowerCase(),
+                password: passwordInput.value,
+                registeredAt: new Date().toISOString()
+            };
+
+            // Stored User Data in localStorage
+            existingUsers.push(userData);
+            localStorage.setItem('users', JSON.stringify(existingUsers));
+
+            // Store current user session
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+            localStorage.setItem('isLoggedIn', 'true');
+
+            alert('Registered successfully');
+            window.location.href = 'dashboard.html';
 
         })
     </script>

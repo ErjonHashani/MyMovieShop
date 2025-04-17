@@ -88,7 +88,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium">
+                    class="w-full bg-red-600 text-white py-3 rounded-md hover:bg-red-700 transition-colors duration-200 font-medium cursor-pointer">
                     SIGN IN NOW
                 </button>
 
@@ -113,7 +113,24 @@
     </section>
 
     <script>
+
         const form = document.querySelector('#loginForm');
+
+        // Auto-fill email if Remember me was checked
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            if (rememberedEmail) {
+                document.querySelector('#email').value = rememberedEmail;
+                document.querySelector('#remember').checked = true;
+            }
+        });
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -122,12 +139,11 @@
             const emailError = document.querySelector('#emailError');
             const passwordInput = document.querySelector('#password');
             const passwordError = document.querySelector('#passwordError');
+            const rememberMe = document.querySelector('#remember').checked;
 
             // Error resets
             emailError.classList.add('hidden');
             passwordError.classList.add('hidden');
-            emailInput.setCustomValidity('');
-            passwordInput.setCustomValidity('');
 
             // Validation
             let isValid = true;
@@ -146,26 +162,49 @@
                 passwordError.textContent = 'Password is required';
                 passwordError.classList.remove('hidden');
                 isValid = false;
-            } else if (passwordInput.value.length < 8) {
-                passwordError.textContent = 'Password must be at least 8 characters';
-                passwordError.classList.remove('hidden');
-                isValid = false;
-            }
-            else if (!/\d/.test(passwordInput.value)) {
-                passwordError.textContent = 'Password must contain at least one number';
-                passwordError.classList.remove('hidden');
-                isValid = false;
+            } 
+
+            // All registered users
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Find User with email
+            const user = users.find(user => user.email.toLowerCase() === emailInput.value.trim().toLowerCase());
+
+            if (!user) {
+                emailError.textContent = 'No account found with this email';
+                emailError.classList.remove('hidden');
+                return;
             }
 
-
-            if (isValid) {
-                alert('Login successfully')
-                this.submit();
+            if (user.password !== passwordInput.value) {
+                passwordError.textContent = 'Incorrect password';
+                passwordError.classList.remove('hidden');
+                return;
             }
+
+            // Current session stored
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('isLoggedIn', 'true');
+
+            // Remember email if Remember me was checked
+            if (rememberMe) {
+                localStorage.setItem('rememberedEmail', user.email);
+            }else{
+                localStorage.removeItem('rememberedEmail');
+            }
+
+            alert('Login successful!');
+            window.location.href = 'dashboard.html';
+
         });
 
-
-
+         //  Clear errors as users type
+        [emailInput, passwordInput].forEach(input => {
+                input.addEventListener('input', () => {
+                    document.querySelector(`#${input.id}Error`).classList.add('hidden');
+            });
+        });
+        
     </script>
 </body>
 

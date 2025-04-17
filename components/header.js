@@ -1,7 +1,8 @@
 import { getCart, cartHasItems } from './cartUtils.js';
 
 function Header(header_container) {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const isLoggedIn = !!currentUser; 
     const cart = getCart();
     const hasItems = cartHasItems();
 
@@ -37,7 +38,7 @@ function Header(header_container) {
                             <li><a href="index.html" class="text-2xl text-white hover:text-red-500 transition-colors">Home</a></li>
                             <li><a href="shop.html" class="text-2xl text-white hover:text-red-500 transition-colors">Shop</a></li>
                             <li>
-                                <a href="cart.html" class="text-2xl text-white hover:text-red-500 transition-colors flex gap-2 items-center">
+                                <a href="cart.html" class="text-2xl text-white hover:text-red-500 transition-colors flex gap-1 items-center">
                                     Cart 
                                     <span class="mt-1 relative">
                                         <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -74,7 +75,7 @@ function Header(header_container) {
                         <li class="header-nav-link"><a href="index.html">Home</a></li>
                         <li class="header-nav-link"><a href="shop.html">Shop</a></li>
                         <li class="header-nav-link">
-                            <a href="cart.html" class="flex items-center gap-2">
+                            <a href="cart.html" class="flex items-center gap-1">
                                 Cart 
                                 <span class="mt-1 relative">
                                     <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -156,6 +157,8 @@ function Header(header_container) {
     const handleLogout = (e) => {
         e.preventDefault();
         localStorage.setItem('isLoggedIn', 'false');
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('movieCart')
         window.location.href = 'index.html';
     };
 

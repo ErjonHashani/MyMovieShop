@@ -14,7 +14,7 @@
       @apply text-white text-sm sm:text-lg;
     }
     .header-nav-link{
-      @apply text-base text-gray-300 relative hover:text-white transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-red-500 hover:after:w-full after:transition-all after:duration-300;
+      @apply text-base pb-1 text-gray-300 relative hover:text-white transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 hover:after:w-full after:transition-all after:duration-300;
     }
     .shop-next-prev-button{
       @apply text-white bg-gray-700 py-2 px-4 hover:bg-gray-500 duration-500 rounded-md cursor-pointer;

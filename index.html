@@ -1,134 +1,347 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Favicon Basic -->
+  <meta name="description"
+    content="MyMovieShop - Premium digital movie marketplace with the latest releases and classics">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
   <link rel="shortcut icon" href="favicon/favicon.ico">
-
-  <!-- Apple Devices -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  
+
   <link href="./src/output.css" rel="stylesheet">
-  <title>MyMovieShop</title>
+  <title>MyMovieShop | Premium Movie Collection</title>
 </head>
 
-<body>
+<body class="bg-gray-950 text-gray-100 antialiased">
 
   <!-- HEADER -->
-  <header id="header" class="bg-gray-800 py-4 px-8 sm:px-16 sticky top-0 z-20"></header>
+  <header id="header"
+    class="bg-gray-900/80 lg:backdrop-blur-md py-4 px-6 sm:px-12 sticky top-0 z-50 border-b border-gray-800 shadow-lg">
+  </header>
 
-  <!-- SLIDER -->
-  <section class="bg-gray-800">
-    <div id="slider" class="container mx-auto relative overflow-hidden w-full bg-black">
-      <img src="./assets/images/dune-part-2.jpg" alt="Dune Part 2"
-        class="w-full object-center h-[170px] sm:h-[250px] md:h-[300px] lg:h-[400px] xl:h-[450px]">
+  <!-- HERO SLIDER -->
+  <section class="relative bg-gray-900">
+    <div id="slider" class="max-h-[80vh] overflow-hidden"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/40 to-transparent"></div>
+  </section>
+
+  <!-- LATEST MOVIES -->
+  <section class="py-20">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold tracking-wider text-red-500 uppercase">New Releases</span>
+        <h2
+          class="text-4xl md:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+          Fresh From The Studio
+        </h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
+          Just added to our premium collection. Updated weekly with the hottest releases.
+        </p>
+      </div>
+      <div id="latest-movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+      <div class="flex justify-center mt-16">
+        <a href="shop.html"
+          class="group relative inline-flex items-center overflow-hidden rounded-full px-8 py-3 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-medium shadow-lg hover:shadow-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+          <span>Browse All Movies</span>
+          <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor"
+            viewBox="0 0 448 512">
+            <path
+              d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
+  <!-- FEATURED CATEGORIES -->
+  <section class="py-20 bg-gray-900/50">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold tracking-wider text-red-500 uppercase">Collections</span>
+        <h2
+          class="text-4xl md:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+          Explore By Category
+        </h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
+          Handpicked selections for every movie lover's taste
+        </p>
+      </div>
 
-  <!-- LATEST MOVIE - API SHOW -->
-  <section class="pt-20 pb-14">
-    <div class="container mx-auto px-8 sm:px-16">
-      <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-4 tracking-tight text-center">
-        <span
-          class="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700 uppercase tracking-wide">Latest
-          Movies</span>
-      </h1>
-      <p class="text-center text-red-600 mb-16 flex gap-1 items-center justify-center">Watch the latest movies of 2025
-        <span class="text-gray-800"><svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path
-              d="M448 32l-86.1 0-1 1-127 127 92.1 0 1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128l0-64c0-15.1-5.3-29.1-14-40l-104 104L512 160zM294.1 32l-92.1 0-1 1L73.9 160l92.1 0 1-1 127-127zM64 32C28.7 32 0 60.7 0 96l0 64 6.1 0 1-1 127-127L64 32zM512 192L0 192 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-224z" />
-          </svg></span></p>
-      <div id="latest-movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
-    </div>
-    <div class="flex justify-center items-center mt-14">
-      <a href="shop.html"
-        class="flex gap-2 justify-center items-center bg-gray-800 text-gray-200 py-4 px-6 hover:bg-gray-800/90 duration-500 rounded-lg">Shop
-        movies <svg class="size-4 mt-1 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path
-            d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-        </svg></a>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Action -->
+        <a href="#"
+          class="group relative overflow-hidden rounded-xl h-48 bg-gradient-to-br from-orange-900/50 to-gray-900 border border-gray-800 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-6">
+            <h3 class="text-2xl font-bold text-white">Action</h3>
+            <p class="text-gray-400 text-sm mt-1">Heart-pounding excitement</p>
+            <div class="mt-3 flex items-center text-yellow-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span class="text-xs ml-1 text-gray-300">245 titles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Sci-Fi -->
+        <a href="#"
+          class="group relative overflow-hidden rounded-xl h-48 bg-gradient-to-br from-blue-900/50 to-gray-900 border border-gray-800 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1533613220915-609f661a6fe1?q=80&w=1964')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-6">
+            <h3 class="text-2xl font-bold text-white">Sci-Fi</h3>
+            <p class="text-gray-400 text-sm mt-1">Futuristic adventures</p>
+            <div class="mt-3 flex items-center text-yellow-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span class="text-xs ml-1 text-gray-300">189 titles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Drama -->
+        <a href="#"
+          class="group relative overflow-hidden rounded-xl h-48 bg-gradient-to-br from-purple-900/50 to-gray-900 border border-gray-800 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1543536448-d209d2d13a1c?q=80&w=2070')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-6">
+            <h3 class="text-2xl font-bold text-white">Drama</h3>
+            <p class="text-gray-400 text-sm mt-1">Compelling stories</p>
+            <div class="mt-3 flex items-center text-yellow-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span class="text-xs ml-1 text-gray-300">312 titles</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Comedy -->
+        <a href="#"
+          class="group relative overflow-hidden rounded-xl h-48 bg-gradient-to-br from-yellow-900/50 to-gray-900 border border-gray-800 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+          <div
+            class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070')] bg-cover bg-center opacity-30 group-hover:opacity-40 transition-opacity duration-500">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-6">
+            <h3 class="text-2xl font-bold text-white">Comedy</h3>
+            <p class="text-gray-400 text-sm mt-1">Laugh-out-loud fun</p>
+            <div class="mt-3 flex items-center text-yellow-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span class="text-xs ml-1 text-gray-300">278 titles</span>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ABOUT US -->
-  <section class="bg-gray-800 py-16">
-    <div class="container mx-auto px-16 lg:flex lg:gap-10 text-gray-200 items-center">
-      <img
-        src="https://media.istockphoto.com/id/956161134/photo/man-using-credit-card-to-pay-for-video-on-demand-service.jpg?s=612x612&w=0&k=20&c=du3jhi7DD1q8PdNNCVevW_Ytwj9kaI-5U96pCV9DswA="
-        alt="Movie Shop Image" class="rounded-lg">
-      <div class="flex flex-col mt-3 lg:mt-0 items-center lg:items-start">
-        <div class="flex items-center gap-2 mb-2">
-          <h2 class="text-3xl font-bold">About</h2>
-          <span class="text-2xl text-red-600 uppercase font-bold self-end">
-            MyMovie<span class="text-gray-200">Shop</span>
-          </span>
-        </div>
-        <p>
-          Welcome to MyMovieShop, your ultimate destination for discovering and buying movies! Powered by TMDB, we bring
-          you the latest films, classics, and hidden gems — all in one place. Browse, explore, and own your favorite
-          movies with just a few clicks.
-        </p>
-        <!-- About SVG's -->
-        <div class="flex flex-col gap-4 my-6">
-          <div class="flex items-center gap-2">
-            <div class="text-black bg-gray-50/50 p-2 rounded-full">
-              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path
-                  d="M0 96C0 60.7 28.7 32 64 32l384 0c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96zM48 368l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 240l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm368-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM48 112l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16L64 96c-8.8 0-16 7.2-16 16zM416 96c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM160 128l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32L192 96c-17.7 0-32 14.3-32 32zm32 160c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-128 0z" />
-              </svg>
-            </div>
-            <p>Endless Selection - From blockbusters to indie films</p>
+  <section class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-red-500/10 rounded-full filter blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+        <div class="lg:w-1/2 relative group">
+          <div
+            class="relative z-10 rounded-xl overflow-hidden shadow-2xl transform group-hover:-rotate-1 transition duration-500">
+            <img src="https://images.unsplash.com/photo-1608889825205-eebdb9fc5806?q=80&w=2070"
+              alt="Movie streaming on multiple devices"
+              class="w-full h-auto object-cover transition duration-500 group-hover:scale-105">
           </div>
-          <div class="flex items-center gap-2">
-            <div class="text-green-500 bg-green-300/20 p-2 rounded-full">
-              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                <path
-                  d="M64 32C28.7 32 0 60.7 0 96l0 32 576 0 0-32c0-35.3-28.7-64-64-64L64 32zM576 224L0 224 0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-192zM112 352l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16l128 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-128 0c-8.8 0-16-7.2-16-16z" />
-              </svg>
-            </div>
-            <p>Easy Purchases - Buy digital copies instantly</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="text-yellow-500 bg-yellow-300/20 p-2 rounded-full">
-              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path
-                  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
-              </svg>
-            </div>
-            <p>Smart Search - Find exactly what you love</p>
+          <div
+            class="absolute -inset-4 border-2 border-gray-800 rounded-xl opacity-20 group-hover:opacity-40 transition duration-500">
           </div>
         </div>
 
-        <div class="mt-6 rounded-lg py-3 hover:scale-105 duration-500">
-          <a href="#" class="bg-gray-300 text-gray-900 flex gap-2 items-center px-5 py-3 rounded-full">
-            <div class="p-2 rounded-full">
-              <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path
-                  d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3 0 256S114.7 0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1l46.6 94h-14.6l-50-100-48.9 100h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3l68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9l54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z" />
-              </svg>
+        <div class="lg:w-1/2">
+          <span class="text-sm font-semibold tracking-wider text-red-500 uppercase">Premium Experience</span>
+          <h2
+            class="text-4xl md:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+            About <span class="text-red-500">MyMovie</span>Shop
+          </h2>
+
+          <p class="text-gray-400 text-lg leading-relaxed mt-6">
+            MyMovieShop is revolutionizing how you experience cinema at home. We partner directly with studios to bring
+            you premium digital ownership of your favorite films in stunning 4K HDR quality with Dolby Atmos sound.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-red-500/10 p-3 rounded-lg text-red-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 640 512">
+                  <path
+                    d="M64 64V352H576V64H64zM0 64C0 28.7 28.7 0 64 0H576c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM128 448H512c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">4K Ultra HD</h3>
+                <p class="text-gray-400 text-sm mt-1">Crystal clear picture quality</p>
+              </div>
             </div>
-            <span>Start exploring</span>
-          </a>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-blue-500/10 p-3 rounded-lg text-blue-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 512 512">
+                  <path
+                    d="M499.1 6.3c8.1 6 12.9 15.6 12.9 25.7v72V368c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V147L192 223.8V432c0 44.2-43 80-96 80s-96-35.8-96-80s43-80 96-80c11.2 0 22 1.6 32 4.6V200 128c0-14.1 9.3-26.6 22.8-30.7l320-96c9.7-2.9 19.9 0 26.7 7.2 6.8 7.2 9 17.6 5.6 26.8z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Dolby Atmos</h3>
+                <p class="text-gray-400 text-sm mt-1">Immersive 3D audio</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-purple-500/10 p-3 rounded-lg text-purple-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 576 512">
+                  <path
+                    d="M64 32C28.7 32 0 60.7 0 96v32H576V96c0-35.3-28.7-64-64-64H64zM576 224H0V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V224zM112 352h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm112 16c0-8.8 7.2-16 16-16H368c8.8 0 16 7.2 16 16s-7.2 16-16 16H240c-8.8 0-16-7.2-16-16z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Offline Viewing</h3>
+                <p class="text-gray-400 text-sm mt-1">Download and watch anywhere</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-green-500/10 p-3 rounded-lg text-green-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 512 512">
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Lifetime Access</h3>
+                <p class="text-gray-400 text-sm mt-1">Own it forever</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a href="about.html"
+              class="inline-flex items-center px-6 py-3 border border-gray-700 hover:border-red-500/50 text-white rounded-full transition-all duration-300 hover:bg-gray-800/30 group">
+              <span>Learn More</span>
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="currentColor"
+                viewBox="0 0 448 512">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA SECTION - SOCIAL MEDIA -->
-  <section id="social-media"></section>
+  <!-- SOCIAL LINKS - MODERN VERSION -->
+  <section class="py-16 bg-gradient-to-b from-gray-900 to-gray-950">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+          Join Our Community
+        </h3>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Follow us for exclusive content, early access to new releases, and special community events
+        </p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
+        <a href="#"
+          class="group relative flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700/50 rounded-lg border border-gray-700 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+          <svg class="w-5 h-5 text-[#1DA1F2]" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+          <span class="font-medium">Twitter</span>
+        </a>
+
+        <a href="#"
+          class="group relative flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700/50 rounded-lg border border-gray-700 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+          <svg class="w-5 h-5 text-[#E4405F]" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+          <span class="font-medium">Instagram</span>
+        </a>
+
+        <a href="#"
+          class="group relative flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700/50 rounded-lg border border-gray-700 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+          <svg class="w-5 h-5 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+          </svg>
+          <span class="font-medium">Facebook</span>
+        </a>
+
+        <a href="#"
+          class="group relative flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700/50 rounded-lg border border-gray-700 hover:border-red-500/30 transition-all duration-300 hover:-translate-y-0.5">
+          <svg class="w-5 h-5 text-[#FF0000]" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+          </svg>
+          <span class="font-medium">YouTube</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER - MODERN VERSION -->
+  <section class="py-20 bg-gradient-to-b from-gray-950 to-black">
+    <div class="container mx-auto px-6 lg:px-12 max-w-4xl">
+      <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 sm:p-12 backdrop-blur-sm">
+        <div class="text-center mb-8">
+          <h3 class="text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+            Stay In The Loop
+          </h3>
+          <p class="text-gray-400">
+            Subscribe to get exclusive updates on new releases, special offers, and curated recommendations.
+          </p>
+        </div>
+
+        <form class="flex flex-col sm:flex-row gap-4">
+          <div class="flex-grow">
+            <input type="email" placeholder="Enter your email"
+              class="w-full px-6 py-3 bg-gray-800 border border-gray-700 focus:border-red-500 rounded-full text-white placeholder-gray-500 focus:outline-none transition-all duration-300"
+              required>
+          </div>
+          <button type="submit"
+            class="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-medium rounded-full transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+            Subscribe
+          </button>
+        </form>
+
+        <p class="text-xs text-gray-500 mt-4 text-center">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer id="footer" class="bg-gradient-to-b from-gray-800 to-gray-900"></footer>
+  <footer id="footer" class="bg-black pt-16 pb-8 border-t border-gray-900"></footer>
 
-
-  <!-- <script src="./api/api.js"></script> -->
   <script type="module">
     // Imported Modules
     import { movies } from './api/api.js';
@@ -137,24 +350,48 @@
     import Footer from './components/footer.js';
     import Social from './components/social.js';
 
-    //DOM Containers
+    // DOM Containers
     const header_container = document.querySelector('#header');
     const footer_container = document.querySelector('#footer');
     const slider_container = document.querySelector('#slider');
-    const social_container = document.querySelector('#social-media');
-    const latest_movies_container = document.querySelector('#latest-movies');
+    const latest_movies_container = document.getElementById('latest-movies');
 
-    Header(header_container);
-    Slider(slider_container);
-    Footer(footer_container);
-    Social(social_container);
+    try {
+      // Initialize Components
+      Header(header_container);
+      Slider(slider_container);
+      Footer(footer_container);
 
+      // Try to load movies with error handling
+      try {
+        await movies(1, latest_movies_container, 8);
+        console.log('Movies loaded successfully');
+      } catch (moviesError) {
+        console.error('Failed to load movies:', moviesError);
+        latest_movies_container.innerHTML = '<p class="text-red-500">Failed to load movies. Please try again later.</p>';
+      }
+    } catch (error) {
+      console.error('Initialization error:', error);
+    }
 
-    // Latest Movies Section
-    movies(1, latest_movies_container, 12)
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const animateOnScroll = () => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = (rect.top <= window.innerHeight * 0.75);
+          if (isVisible) {
+            el.classList.add('animate-fadeInUp');
+          }
+        });
+      };
 
+      // Run once on load
+      animateOnScroll();
 
-
+      // And then on scroll
+      window.addEventListener('scroll', animateOnScroll);
+    });
   </script>
 </body>
 

@@ -1,145 +1,188 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse premium movies at MyMovieShop - 4K UHD, Blu-ray, and digital formats">
 
-  <!-- Favicon Basic -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
   <link rel="shortcut icon" href="favicon/favicon.ico">
-
-  <!-- Apple Devices -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 
   <link href="./src/output.css" rel="stylesheet">
   <title>Shop | MyMovieShop</title>
+  <style>
+    #pagination {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .shop-next-prev-button {
+      transition: all 0.2s ease;
+    }
+
+    .shop-next-prev-button:hover {
+      transform: translateY(-1px);
+    }
+
+    #search:focus {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.5);
+    }
+  </style>
 </head>
 
-<body>
-
+<body class="bg-gray-950 text-gray-100 antialiased">
 
   <!-- HEADER -->
-  <header id="header" class="bg-gray-800 py-4 px-8 sm:px-16 sticky top-0 z-20"></header>
+  <header id="header"
+    class="bg-gray-900/90 lg:backdrop-blur-sm py-4 px-6 sm:px-12 sticky top-0 z-50 border-b border-gray-800 shadow-lg transition-colors duration-300">
+  </header>
 
-
-
-
-
-  <!-- MOVIES - API SHOW -->
+  <!-- MOVIES SECTION -->
   <section class="pt-20 pb-20">
-    <div class="container mx-auto px-10 sm:px-16">
-      <div class="flex flex-col justify-center items-center mb-20">
-        <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-6 tracking-tight">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-800 to-red-500">Cinematic
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12">
+      <!-- Hero Section -->
+      <div class="flex flex-col justify-center items-center mb-16">
+        <h1 class="text-3xl sm:text-5xl font-bold capitalize mb-6 tracking-tight text-center">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-red-500">Cinematic
             Collection</span>
         </h1>
-        <p class="text-xl font-normal mb-6 text-center">
+        <p class="text-lg sm:text-xl font-normal mb-6 text-center text-gray-400 max-w-2xl">
           Discover cinematic excellence in every format
         </p>
-        <div class="lg:w-[850px] p-8 text-center rounded-lg bg-gradient-to-r bg-gray-800 to-gray-700">
-          <span class="text-gray-200">Browse our curated selection of films—from timeless classics to the latest
-            blockbusters. Own your favorites in <span class="text-orange-600">4K UHD</span>, <span
-              class="text-blue-600">Blu-ray</span>, or <span class="text-purple-600">digital formats</span>. Limited
-            editions, exclusive bundles, and collector's sets await!</span>
+        <div
+          class="w-full max-w-4xl p-6 sm:p-8 text-center rounded-lg bg-gradient-to-r from-gray-800/80 to-gray-700/80 border border-gray-700/50 backdrop-blur-sm">
+          <span class="text-gray-300">
+            Browse our curated selection of films—from timeless classics to the latest
+            blockbusters. Own your favorites in <span class="text-orange-500 font-medium">4K UHD</span>, <span
+              class="text-blue-400 font-medium">Blu-ray</span>, or <span class="text-purple-400 font-medium">digital
+              formats</span>. Limited
+            editions, exclusive bundles, and collector's sets await!
+          </span>
         </div>
       </div>
 
-
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-7 gap-6">
-        <!-- PREVIOUS/NEXT BUTTONS -->
-        <div class="flex gap-3" id="pagination">
-          <button class="shop-next-prev-button" id="prev">Prev</button>
-          <span class="shop-next-prev-button" id="active_page"></span>
-          <button class="shop-next-prev-button" id="next">Next</button>
+      <!-- Controls -->
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 gap-4">
+        <!-- Pagination -->
+        <div class="flex gap-2" id="pagination">
+          <button
+            class="shop-next-prev-button bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md border border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            id="prev" aria-label="Previous page">
+            Prev
+          </button>
+          <span
+            class="shop-next-prev-button bg-gray-800 text-white px-4 py-2 rounded-md border border-gray-700 font-medium"
+            id="active_page">
+            1
+          </span>
+          <button
+            class="shop-next-prev-button bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md border border-gray-700"
+            id="next" aria-label="Next page">
+            Next
+          </button>
         </div>
-        <!-- SEARCH BAR -->
-        <div class="flex">
-          <input type="search" name="search" id="search" placeholder="Search..."
-            class="py-2 pl-5 pr-10 text-gray-600 rounded-l-md border-1 border-gray-400 focus-visible:outline-none">
-          <button type="submit" class="bg-gray-800 rounded-r-md flex px-4 cursor-pointer">
-            <svg class="size-4 fill-white self-center" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+
+        <!-- Search -->
+        <div class="relative flex-1 max-w-md">
+          <input type="search" name="search" id="search" placeholder="Search movies..."
+            class="w-full py-2 pl-5 pr-10 bg-gray-800 text-gray-200 rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500/50 transition-all duration-200"
+            aria-label="Search movies">
+          <button id="search-btn" type="submit"
+            class="absolute right-0 top-0 h-full px-3 text-gray-400 hover:text-white transition-colors duration-200"
+            aria-label="Search">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
               <path
                 d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
             </svg>
           </button>
         </div>
       </div>
-      <div id="movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+
+      <!-- Movies Grid -->
+      <div id="movies" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"></div>
     </div>
   </section>
 
-
-  <!-- CTA SECTION - SOCIAL MEDIA -->
-  <section id="social-media"></section>
+  <!-- SOCIAL MEDIA -->
+  <section id="social-media" class="pb-16"></section>
 
   <!-- FOOTER -->
-  <footer id="footer" class="bg-gray-800"></footer>
+  <footer id="footer" class="bg-gray-900 border-t border-gray-800 pt-16 pb-8"></footer>
 
-
-  <!-- <script src="./api/api.js"></script> -->
   <script type="module">
-    // Imported Modules
     import { movies } from './api/api.js';
     import { search } from './api/api.js';
     import Header from './components/header.js';
     import Footer from './components/footer.js';
     import Social from './components/social.js';
 
-
-    //DOM Containers
+    // DOM Elements
     const header_container = document.querySelector('#header');
     const footer_container = document.querySelector('#footer');
     const social_container = document.querySelector('#social-media');
     const movies_container = document.querySelector('#movies');
-    const active_page_container = document.querySelector('#active_page')
+    const active_page_container = document.querySelector('#active_page');
     const next_btn = document.querySelector('#next');
     const prev_btn = document.querySelector('#prev');
     const search_input = document.querySelector('#search');
-    const pagination_container = document.querySelector('#pagination')
+    const searchBtn = document.querySelector('#search-btn');
 
+    // Initialize components
     Header(header_container);
     Footer(footer_container);
     Social(social_container);
 
-
-    // Variables
+    // Pagination
     let page = 1;
-    active_page_container.innerHTML = page;
+    active_page_container.textContent = page;
 
-
-
-    // Movies Section
-    movies(page, movies_container)
-
-    // Next and Prev
-    next_btn.addEventListener('click', function (e) {
-      page++;
+    const loadMovies = () => {
       movies(page, movies_container);
-      active_page_container.innerHTML = page;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      prev_btn.disabled = page === 1;
+    };
+
+    // Initial load
+    loadMovies();
+
+    // Search functionality
+    const handleSearch = () => {
+      const query = search_input.value.trim();
+      if (query.length > 0) {
+        search(query, movies_container);
+        active_page_container.textContent = '1';
+      } else {
+        loadMovies();
+      }
+    };
+
+    // Event listeners
+    search_input.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') handleSearch();
     });
 
-    prev_btn.addEventListener('click', function (e) {
+    searchBtn.addEventListener('click', handleSearch);
+
+    next_btn.addEventListener('click', () => {
+      page++;
+      active_page_container.textContent = page;
+      loadMovies();
+    });
+
+    prev_btn.addEventListener('click', () => {
       if (page > 1) {
         page--;
+        active_page_container.textContent = page;
+        loadMovies();
       }
-      movies(page, movies_container);
-      active_page_container.innerHTML = page;
     });
-
-    // Search
-    search_input.addEventListener('keyup', function (e) {
-      switch (e.keyCode) {
-        case 13:
-          pagination_container.style.display = 'hidden';
-          search(e.target.value, movies_container)
-          break;
-      }
-    })
-
-
   </script>
+
 </body>
 
 </html>

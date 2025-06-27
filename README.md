@@ -21,10 +21,7 @@ _Showcasing modern web development skills with HTML5, Tailwind CSS, and vanilla 
 
 ## 📸 Screenshots
 
-<div align="center">
-  <img src="assets/images/Screenshot(169).png" alt="MyMovieShop Main Interface" width="800"/>
-  <p><em>Main application interface showing movie grid and search functionality</em></p>
-</div>
+![MyMovieShop Interface](./assets/images/Screenshot(169).png)
 
 ---
 

@@ -5,7 +5,7 @@
 
 **Live Demo**: [https://erjonhashani.github.io/MyMovieShop/](https://erjonhashani.github.io/MyMovieShop/)
 
-![MyMovieShop Screenshot](https://via.placeholder.com/1920x600/111827/ffffff?text=MyMovieShop+Demo)
+![MyMovieShop Hero](assets/images/Screenshot(162).png)
 
 ---
 

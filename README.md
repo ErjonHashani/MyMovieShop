@@ -54,8 +54,8 @@ _Showcasing modern web development skills with HTML5, Tailwind CSS, and vanilla 
 ```text
 📁 components/
 ├── header.js       # Responsive navigation
-├── movie-card.js   # Reusable movie component
-├── cart-manager.js # State management
-├── search.js       # Live search functionality
-└── theme-switcher.js # Dark/light mode toggle
-```
+├── slider.js       # Modern slider in homepage  
+├── cart-utils.js   # State management
+├── api.js          # TMDB API integration
+├── footer.js       # Page footer with links
+└── social.js       # Reusable social media icons

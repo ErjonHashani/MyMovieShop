@@ -50,4 +50,6 @@
 ├── search.js       # Live search functionality
 └── theme-switcher.js # Dark/light mode toggle
 
+---
+
 ![MyMovieShop Hero](assets/images/Screenshot(162).png)

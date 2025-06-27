@@ -5,8 +5,6 @@
 
 **Live Demo**: [https://erjonhashani.github.io/MyMovieShop/](https://erjonhashani.github.io/MyMovieShop/)
 
-![MyMovieShop Hero](assets/images/Screenshot(162).png)
-
 ---
 
 ## 🌟 Features
@@ -51,3 +49,5 @@
 ├── cart-manager.js # State management
 ├── search.js       # Live search functionality
 └── theme-switcher.js # Dark/light mode toggle
+
+![MyMovieShop Hero](assets/images/Screenshot(162).png)

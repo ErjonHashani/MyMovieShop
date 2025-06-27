@@ -21,7 +21,7 @@ _Showcasing modern web development skills with HTML5, Tailwind CSS, and vanilla 
 
 ## 📸 Screenshots
 
-![MyMovieShop Interface](./assets/images/Screenshot(169).png)
+![MyMovieShop Interface](/assets/images/Screenshot(169).png)
 
 ---
 

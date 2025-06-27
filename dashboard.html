@@ -4,154 +4,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyMovieShop Dashboard - View your purchase history and account details">
 
-    <!-- Favicon Basic -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="shortcut icon" href="favicon/favicon.ico">
-
-    <!-- Apple Devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 
     <title>Dashboard | MyMovieShop</title>
     <link rel="stylesheet" href="./src/output.css">
+    <style>
+        .receipt-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .receipt-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie-item {
+            transition: background-color 0.2s ease;
+        }
+
+        .movie-item:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-gray-950 text-gray-900">
 
-    <header id="header" class="bg-gray-800 py-4 px-8 sm:px-16 sticky top-0 z-20"></header>
+    <header id="header"
+        class="bg-gray-900/90 lg:backdrop-blur-sm py-4 px-8 sticky top-0 z-20 border-b border-gray-800 shadow-lg"></header>
 
-    <main class="px-8 sm:px-16">
-        <div class="container mx-auto">
-            <section>
-                <div>
-                    <p id="timeRegistered" class="text-center text-sm text-gray-400 pt-2 pb-5"></p>
-                    <h1 class="pb-2 text-4xl font-bold text-red-700">Dashboard</h1>
-                    <p id="welcomeMessage" class="text-xl font-semibold text-gray-800"></p>
-                    <p class="pt-10 text-xl font-semibold uppercase text-gray-600 pb-2">Your receipts</p>
+    <main class="px-6 sm:px-12 py-8">
+        <div class="container mx-auto max-w-6xl">
+            <!-- User Welcome Section -->
+            <section class="mb-12">
+                <div class="bg-gradient-to-r from-red-700 to-red-600 rounded-xl p-8 text-white">
+                    <p id="timeRegistered" class="text-sm text-red-100 opacity-90 mb-1"></p>
+                    <h1 class="text-3xl sm:text-4xl font-bold mb-2">Welcome back, <span id="welcomeMessage"
+                            class="text-white"></span></h1>
+                    <p class="text-red-100 opacity-90">Your movie collection awaits</p>
                 </div>
             </section>
-            <section id="receipts" class="grid lg:grid-cols-2 gap-5 mb-5">
 
+            <!-- Receipts Section -->
+            <section class="mb-16">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-gray-200 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                            <path d="M14 3v5h5m-4 4H9m6 4H9m2-8H9" />
+                        </svg>
+                        Your Receipts
+                    </h2>
+                    <p class="text-gray-500 text-sm">Total purchases: <span id="totalPurchases"
+                            class="font-medium">0</span></p>
+                </div>
+
+                <div id="receipts" class="grid gap-6 lg:grid-cols-2">
+                    <!-- Receipts will be inserted here -->
+                    <div class="text-center py-12 text-gray-500" id="emptyReceipts">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
+                        </svg>
+                        <p class="text-lg">No purchases yet</p>
+                        <a href="shop.html"
+                            class="mt-4 inline-block px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors duration-200">
+                            Browse Movies
+                        </a>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer id="footer" class="px-8 sm:px-16">
-        <div class="container mx-auto mt-16 py-5 border-t-1 border-gray-200">
-            <p class="text-center text-gray-800 text-sm sm:text-base">&copy; <span id="currentYear"></span> MyMovieShop.
-                All rights reserved. Data
-                provided by <a class="text-blue-500 hover:text-blue-600 duration-100"
-                    href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-950 text-gray-400 py-8 px-6 sm:px-12 border-t border-gray-800">
+        <div class="container mx-auto">
+            <p class="text-center text-sm sm:text-base">
+                &copy; <span id="currentYear"></span> MyMovieShop. All rights reserved.
+                Data provided by <a class="text-blue-400 hover:text-blue-300 transition-colors"
+                    href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.
+            </p>
         </div>
     </footer>
 
     <script type="module">
         // Import modules
         import Header from './components/header.js';
+        import Footer from './components/footer.js';
 
         // DOM containers
         const timeOfRegistration = document.querySelector('#timeRegistered');
         const welcomeMessage = document.querySelector('#welcomeMessage');
         const header_container = document.querySelector('#header');
         const receipt_container = document.querySelector('#receipts');
+        const emptyReceipts = document.querySelector('#emptyReceipts');
+        const totalPurchases = document.querySelector('#totalPurchases');
 
+        // Initialize components
         Header(header_container);
 
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Check auth
         const userData = JSON.parse(localStorage.getItem('currentUser'));
         if (!userData) {
             window.location.href = 'login.html';
         }
 
-        welcomeMessage.textContent = `Welome ${userData.name}`;
-        timeOfRegistration.textContent = `Registered at ${userData.registeredAt}`
-
+        // User info
+        welcomeMessage.textContent = userData.name.split(' ')[0]; // First name only
+        timeOfRegistration.textContent = `Member since ${new Date(userData.registeredAt).toLocaleDateString()}`;
 
         // Get receipts from localStorage
         const receipts = JSON.parse(localStorage.getItem('receiptsHistory')) || [];
+        totalPurchases.textContent = receipts.length;
 
-        // Render receipts
-        receipts.forEach(receipt => {
-            const email = userData.email;
+        if (receipts.length > 0) {
+            emptyReceipts.remove();
 
-            // Random tax
-            const randomPrice = Number(localStorage.getItem('randomPrice')) || (Math.random() * 5).toFixed(2);
-            localStorage.setItem('randomPrice', randomPrice);
+            // Render receipts
+            receipts.forEach(receipt => {
+                const email = userData.email;
+                const randomPrice = Number(localStorage.getItem('randomPrice')) || (Math.random() * 5).toFixed(2);
+                localStorage.setItem('randomPrice', randomPrice);
 
-            receipt_container.innerHTML += `
-                <section class="bg-gray-100 py-3 px-5 rounded-lg shadow-sm">
-                    <div class="flex justify-between items-center border-b-1 border-gray-400/30 pb-3">
-                        <div>
-                            <h1 class="text-lg font-bold uppercase"><span class="text-red-600">MyMovie</span>Shop</h1>
-                            <p class="text-gray-600 font-light">Order receipt</p>
-                        </div>
-                        <div class="flex flex-col items-end">
-                            <p class="text-gray-600 font-thin">Order <span class="text-gray-800 font-medium">#${receipt.receiptNumber}</span></p>
-                            <p class="text-gray-600 font-thin">${receipt.date}</p>    
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center border-b-1 border-gray-400/30 py-3">
-                        <div>
-                            <p class="text-gray-600 font-semibold">Customer: <span class="text-gray-800 font-normal">${receipt.customer}</span></p>
-                            <p class="text-gray-600 font-semibold">Email: <span class="text-gray-800 font-normal">${email}</span></p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col justify-between gap-y-5 border-b-1 border-gray-400/30 py-3">
-                        ${receipt.items.map(item => `
-                            <div class="text-gray-800 flex justify-between">
-                                <div class="flex flex-col">
-                                    <p class="text-gray-800 text-lg font-semibold flex items-center gap-2">
-                                        <span class="text-gray-700"><svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448 32l-86.1 0-1 1-127 127 92.1 0 1-1L453.8 32.3c-1.9-.2-3.8-.3-5.8-.3zm64 128l0-64c0-15.1-5.3-29.1-14-40l-104 104L512 160zM294.1 32l-92.1 0-1 1L73.9 160l92.1 0 1-1 127-127zM64 32C28.7 32 0 60.7 0 96l0 64 6.1 0 1-1 127-127L64 32zM512 192L0 192 0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-224z"/></svg></span> 
-                                        <span class="line-clamp-1">${item.title}</span>
-                                    </p> 
-                                    <p class="text-gray-600 font-light">Qty: ${item.quantity}</p>   
+                receipt_container.innerHTML += `
+                    <div class="receipt-card bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-red-200 transition-all">
+                        <div class="p-6">
+                            <!-- Receipt Header -->
+                            <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                <div>
+                                    <h3 class="text-xl font-bold text-red-600 flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+                                        </svg>
+                                        Order #${receipt.receiptNumber}
+                                    </h3>
+                                    <p class="text-gray-500 text-sm">${receipt.date}</p>
                                 </div>
-                                <div class="flex flex-col items-end">
-                                    <span class="text-gray-600 font-light">&euro;${item.price}</span>
-                                    <span class="text-gray-700 font-normal text-lg">&euro;${item.subtotal}</span>        
-                                </div>
-                            </div>`).join('')}
-                    </div>
-                    <div class="pt-8 pb-1 border-b-1 border-gray-400/30">
-                        <div class="flex items-center justify-between">
-                            <p class="text-gray-600">Subtotal</p>
-                            <span class="text-gray-600">&euro;${receipt.totalPrice}</span>    
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <p class="text-gray-600">Tax</p>
-                            <span class="text-gray-600">&euro;${randomPrice}</span>       
-                        </div>
-                    </div>
-                    <div class="pt-1 flex justify-between items-center border-b-1 border-gray-400/30 pb-8">
-                        <p class="text-2xl font-bold text-gray-700">Total</p>
-                        <span class="text-2xl font-bold text-red-500">&euro;${(Number(receipt.totalPrice) + Number(randomPrice)).toFixed(2)}</span>    
-                    </div>
-                    <div class="text-center pt-5 pb-15">
-                        <p class="text-center text-gray-500">Thank you for your purchase! 🎉</p>
-                        <p class="text-center text-gray-500">Your movies are available to stream instantly.</p>
-                    </div>
-                    <div class="text-center">
-                        <button class="email-btn px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow transition duration-150">Email Receipt</button>    
-                    </div>
-                </section>
-            `;
-        });
+                                <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                    Completed
+                                </span>
+                            </div>
 
+                            <!-- Customer Info -->
+                            <div class="py-4 border-b border-gray-100">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7 6a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5v-2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2z"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium">${receipt.customer}</p>
+                                        <p class="text-sm text-gray-500">${email}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Movies List -->
+                            <div class="py-4 border-b border-gray-100 space-y-4">
+                                ${receipt.items.map(item => `
+                                    <div class="movie-item flex justify-between items-center p-2 rounded-lg">
+                                        <div class="flex items-center gap-3">
+                                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M18 9v12H6V9h12zm-1.5-6H7.5l-1 1H5v2h14V4h-1.5l-1-1zM9 10H7v7h2v-7zm4 0h-2v7h2v-7zm4 0h-2v7h2v-7z"/>
+                                            </svg>
+                                            <div>
+                                                <p class="font-medium line-clamp-1">${item.title}</p>
+                                                <p class="text-sm text-gray-500">Qty: ${item.quantity} × €${item.price}</p>
+                                            </div>
+                                        </div>
+                                        <span class="font-medium">€${item.subtotal}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <!-- Totals -->
+                            <div class="pt-4 space-y-2">
+                                <div class="flex justify-between text-gray-600">
+                                    <span>Subtotal</span>
+                                    <span>€${receipt.totalPrice}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-600">
+                                    <span>Tax</span>
+                                    <span>€${randomPrice}</span>
+                                </div>
+                                <div class="flex justify-between text-lg font-bold pt-2">
+                                    <span>Total</span>
+                                    <span class="text-red-600">€${(Number(receipt.totalPrice) + Number(randomPrice)).toFixed(2)}</span>
+                                </div>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="pt-6 flex flex-col sm:flex-row gap-3">
+                                <button class="email-btn flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>
+                                    </svg>
+                                    Email Receipt
+                                </button>
+                                <a href="shop.html" class="flex-1 px-4 py-2.5 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                    </svg>
+                                    Shop Again
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Email receipt handler
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('email-btn')) {
-                const receipt = e.target.closest('section');
-                const orderNumber = receipt.querySelector('.text-gray-800.font-medium').textContent;
-                const customerName = receipt.querySelector('.text-gray-800.font-normal').textContent;
-                const totalAmount = receipt.querySelector('.text-red-500').textContent;
+                const receiptCard = e.target.closest('.receipt-card');
+                const orderNumber = receiptCard.querySelector('h3').textContent.replace('Order #', '');
+                const customerName = receiptCard.querySelector('.font-medium').textContent;
+                const totalAmount = receiptCard.querySelector('.text-red-600').textContent;
 
-                const subject = `Your Movie Receipt ${orderNumber}`;
-                const body = `Hello ${customerName},\n\nThank you for your purchase!\n\n${receipt.innerText}\n\nTotal: ${totalAmount}\n\nYour movies are available to stream immediately.`;
+                const subject = `Your Movie Receipt #${orderNumber}`;
+                const body = `Hello ${customerName},\n\nThank you for your purchase!\n\nOrder #${orderNumber}\n\n${receiptCard.innerText}\n\nTotal: ${totalAmount}\n\nYour movies are available to stream immediately.`;
 
                 window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             }
         });
-
     </script>
 </body>
 

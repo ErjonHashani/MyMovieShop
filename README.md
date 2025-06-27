@@ -3,7 +3,7 @@
 **A sleek movie discovery platform built with pure frontend magic**  
 *Showcasing modern web development skills with HTML5, Tailwind CSS, and vanilla JavaScript*
 
-**Live Demo**: [https://yourusername.github.io/mymovieshop](https://yourusername.github.io/mymovieshop)
+**Live Demo**: [https://erjonhashani.github.io/MyMovieShop/](https://erjonhashani.github.io/MyMovieShop/)
 
 ![MyMovieShop Screenshot](https://via.placeholder.com/1920x600/111827/ffffff?text=MyMovieShop+Demo)
 

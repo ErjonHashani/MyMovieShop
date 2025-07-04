@@ -14,7 +14,6 @@ _Showcasing modern web development skills with HTML5, Tailwind CSS, and vanilla 
 - 🛒 **Interactive Cart** – Zustand-like state management in vanilla JS
 - 🎨 **Tailwind-Powered UI** – Fully responsive and mobile-friendly
 - ⚡ **No Framework Dependencies** – Pure HTML, CSS, and JavaScript
-- 🌗 **Dark/Light Mode** – Automatic theme switching based on user preference
 - 🔐 **Auth Pages** – Simple login & registration forms included
 
 ---
